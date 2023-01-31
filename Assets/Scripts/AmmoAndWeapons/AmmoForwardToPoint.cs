@@ -62,11 +62,19 @@ public class AmmoForwardToPoint : AwakeMonoBehaviour
 
     void FireBulletForwardParameters(int i, int weaponIndex)
     {
-        Debug.Log("rack");
+        Vector3 pos = Vector3.zero;
+
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.SetActive(true);
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.transform.position = _weaponDulo[weaponIndex].position;
-        Vector3 pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 10 * Time.deltaTime);
-        _ammoBulletsRigidbody[i].velocity = (_firePoint - pos);
+
+        float dist = Vector3.Distance(_weaponDulo[weaponIndex].position, _firePoint);
+
+        if(dist < 5)
+            pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 30 * Time.deltaTime);
+        else
+            pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 10 * Time.deltaTime);
+
+        _ammoBulletsRigidbody[i].velocity = (_firePoint - pos) * 1;
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.transform.LookAt(pos);
     }
 }

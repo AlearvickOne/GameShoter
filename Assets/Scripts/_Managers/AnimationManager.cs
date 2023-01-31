@@ -23,9 +23,13 @@ public class AnimationManager : AwakeMonoBehaviour
     [Header("Weapons Animations")]
     [SerializeField] private GameObject[] _weapons;
     private int WEAPON_ANIM_ALL = Animator.StringToHash("Weapons");
-    private int WEAPON_PISTOLET_ANIM_FIRE = Animator.StringToHash("PistoletFire");
-    private int WEAPON_AUTOMAT_ANIM_FIRE = Animator.StringToHash("AutomatFire");
-    private int WEAPON_RACKETNICA_ANIM_FIRE = Animator.StringToHash("AutomatFire");
+    private int WEAPON_PISTOLET_ANIM_IDLE = Animator.StringToHash("PistoletIdle");
+    private int WEAPON_AUTOMAT_ANIM_IDLE = Animator.StringToHash("AutomatIdle");
+    private int WEAPON_RACKETNICA_ANIM_IDLE = Animator.StringToHash("RacketnicaIdle");
+    //________________________________________________________________________________
+    private int WEAPON_PISTOLET_ANIM_RUN = Animator.StringToHash("PistoletRun");
+    private int WEAPON_AUTOMAT_ANIM_RUN = Animator.StringToHash("AutomatRun");
+    private int WEAPON_RACKETNICA_ANIM_RUN = Animator.StringToHash("RacketnicaRun");
 
     private void Start()
     {
@@ -50,18 +54,19 @@ public class AnimationManager : AwakeMonoBehaviour
             WeaponsAnimations();
     }
 
+    #region [PLAYER ANIMATIONS]
     private void PlayerAnimations(bool playerIsMove)
     {
-        switch (playerIsMove && _playerAnimator != null)
-        {
-            case true:
-                _playerAnimator.SetTrigger(PLAYER_ANIM_RUN);
-                break;
-            case false:
-                _playerAnimator.SetTrigger(PLAYER_ANIM_IDLE);
-                break;
-        }
+        if (playerIsMove == true)
+            _playerAnimator.SetTrigger(PLAYER_ANIM_RUN);
+        if (playerIsMove == false)
+            _playerAnimator.SetTrigger(PLAYER_ANIM_IDLE);
+
+
     }
+    #endregion
+
+    #region [MONSTERS ANIMATIONS]
 
     private void MonstersAnimations(AiMonsters[] aiMonsters)
     {
@@ -85,7 +90,9 @@ public class AnimationManager : AwakeMonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region [WEAPONS ANIMATIONS]
     private void WeaponsAnimations()
     {
 
@@ -94,13 +101,13 @@ public class AnimationManager : AwakeMonoBehaviour
             switch (i)
             {
                 case 0:
-                    ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_FIRE, true);
+                    ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_IDLE, WEAPON_RACKETNICA_ANIM_RUN, true);
                     break;
                 case 1:
-                    ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_FIRE, true);
+                    ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_IDLE, WEAPON_AUTOMAT_ANIM_RUN, true);
                     break;
                 case 2:
-                    ActiveWeaponAnim(i, WEAPON_RACKETNICA_ANIM_FIRE, true);
+                    ActiveWeaponAnim(i, WEAPON_RACKETNICA_ANIM_IDLE, WEAPON_PISTOLET_ANIM_RUN, true);
                     break;
             }
         }
@@ -110,13 +117,13 @@ public class AnimationManager : AwakeMonoBehaviour
             switch (i)
             {
                 case 0:
-                    ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_FIRE, false);
+                    ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_IDLE, default, false);
                     continue;
                 case 1:
-                    ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_FIRE, false);
+                    ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_IDLE, default, false);
                     continue;
                 case 2:
-                    ActiveWeaponAnim(i, WEAPON_RACKETNICA_ANIM_FIRE, false);
+                    ActiveWeaponAnim(i, WEAPON_RACKETNICA_ANIM_IDLE, default, false);
                     break;
             }
         }
@@ -127,12 +134,20 @@ public class AnimationManager : AwakeMonoBehaviour
         }
     }
 
-    private void ActiveWeaponAnim(int i, int animName, bool isActive)
+    private void ActiveWeaponAnim(int i, int animNameIdle, int animNameRun, bool isActive)
     {
+
         if (_weapons[i].activeSelf == isActive)
         {
             _playerAnimator.SetBool(WEAPON_ANIM_ALL, true);
-            _playerAnimator.SetBool(animName, isActive);
+            _playerAnimator.SetBool(animNameIdle, isActive);
         }
+
+        if (_pCharacter._playerIsMove == true)
+            _playerAnimator.SetBool(animNameRun, true);
+        else if (_pCharacter._playerIsMove == false)
+            _playerAnimator.SetBool(animNameRun, false);
     }
+
+    #endregion
 }

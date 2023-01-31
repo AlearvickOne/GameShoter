@@ -8,7 +8,6 @@ public class WeaponCharacters : AwakeMonoBehaviour
     [SerializeField] private protected Transform _duloFireTransform;
     [SerializeField] private protected ParticleSystem _firePart;
     [Header("WeaponCharacters")]
-    [SerializeField] private Vector3 fireVector;
     [SerializeField] private protected AmmoType _ammoType;
     [SerializeField] private protected float _rpm;
     [SerializeField] private protected float _rpmTimer;
@@ -36,11 +35,13 @@ public class WeaponCharacters : AwakeMonoBehaviour
             if (_rpmTimer > rpmTimer)
             {
                 RaycastHit hit;
-                Vector3 frw = _duloFireTransform.TransformDirection(fireVector);
-                if (Physics.Raycast(_duloFireTransform.position, frw, out hit))
+                Vector3 frw = _duloFireTransform.TransformDirection(Vector3.forward);
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if(Physics.Raycast(ray, out hit))
                 {
                     Debug.DrawRay(_duloFireTransform.position, frw * 100, Color.green, 1);
-                    Debug.Log(_duloFireTransform.name);
                     _firePart.Play();
                     _weaponSounds.PlayOneShot(_fireSound);
                     _ammoShopQuantity--;

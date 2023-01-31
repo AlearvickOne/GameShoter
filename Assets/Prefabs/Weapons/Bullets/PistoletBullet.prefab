@@ -9638,6 +9638,7 @@ GameObject:
   - component: {fileID: 7562413871086531523}
   - component: {fileID: -4719430907181584412}
   - component: {fileID: 4175164103399150850}
+  - component: {fileID: 6852870496367111411}
   m_Layer: 0
   m_Name: PistoletBullet
   m_TagString: Untagged
@@ -9741,3 +9742,15 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &6852870496367111411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355280295434834454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79917cc79e3869c42a5274c661f63464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

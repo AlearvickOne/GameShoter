@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 892354972421742717}
   - component: {fileID: 5570932303989055277}
   - component: {fileID: 2277505227384924781}
+  - component: {fileID: 5724196729264339377}
   m_Layer: 0
   m_Name: AutomatBullet
   m_TagString: Untagged
@@ -4895,3 +4896,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5724196729264339377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845964090227478984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79917cc79e3869c42a5274c661f63464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

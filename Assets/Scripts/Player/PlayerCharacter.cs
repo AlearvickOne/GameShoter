@@ -3,10 +3,10 @@ using UnityEngine.AI;
 
 public class PlayerCharacter : AwakeMonoBehaviour
 {
-    private NavMeshAgent _playerAgent;
+    protected internal NavMeshAgent _playerAgent;
     private Camera _cam;
     protected internal float _playerHealth = 1000;
-    protected internal bool _playerIsMove;
+    [SerializeField] protected internal bool _playerIsMove;
 
     private void Start()
     {

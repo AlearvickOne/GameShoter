@@ -16,7 +16,9 @@ public class InputManager : AwakeMonoBehaviour
             _pCharacter.MoveRaycast();
             _pCharacter._playerIsMove = true;
         }
-        else
+        else if (_pCharacter._playerAgent.remainingDistance <= _pCharacter._playerAgent.stoppingDistance)
+        {
             _pCharacter._playerIsMove = false;
+        }
     }
 }
