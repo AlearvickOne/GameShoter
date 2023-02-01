@@ -10,9 +10,9 @@ public class SelectionAmmoIsGround : MonoBehaviour
     [SerializeField] private Weapons[] _weaponsScripts;
 
     [Header("All Ammo Quantity Information")]
-    [SerializeField] private int _pistoletQuantity;
-    [SerializeField] private int _automatQuantity;
-    [SerializeField] private int _RacketinicaQuantity;
+    [SerializeField] protected internal int _pistoletQuantity;
+    [SerializeField] protected internal int _automatQuantity;
+    [SerializeField] protected internal int _racketinicaQuantity;
 
     private void Update()
     {
@@ -23,7 +23,7 @@ public class SelectionAmmoIsGround : MonoBehaviour
     {
         _pistoletQuantity = _weaponsScripts[0]._ammoShopQuantity;
         _automatQuantity = _weaponsScripts[1]._ammoShopQuantity;
-        _RacketinicaQuantity = _weaponsScripts[2]._ammoShopQuantity;
+        _racketinicaQuantity = _weaponsScripts[2]._ammoShopQuantity;
     }
 
     private void OnTriggerStay(Collider other)
@@ -57,5 +57,6 @@ public class SelectionAmmoIsGround : MonoBehaviour
     {
         _weaponsScripts[nomberWeapon]._ammoShopQuantity += Random.Range(minAmmoRandom, MaxAmmoRandom);
         _listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.gameObject.SetActive(false);
+
     }
 }

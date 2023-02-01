@@ -26873,6 +26873,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 648937972}
     - target: {fileID: 4593517740121594150, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
+      propertyPath: _ammoQuantityText
+      value: 
+      objectReference: {fileID: 1608594408}
+    - target: {fileID: 4593517740121594150, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
       propertyPath: _listSpawnAmmoShops
       value: 
       objectReference: {fileID: 648937974}
@@ -27024,6 +27028,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8541362703526485023, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
+      propertyPath: _ammoQuantityText
+      value: 
+      objectReference: {fileID: 1109380375}
     - target: {fileID: 8541362703526485023, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
       propertyPath: _weaponFolderInPlayer
       value: 
