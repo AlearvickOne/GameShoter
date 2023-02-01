@@ -27012,6 +27012,10 @@ PrefabInstance:
       propertyPath: _ammoForwardToPoint
       value: 
       objectReference: {fileID: 643715228}
+    - target: {fileID: 5934140470737875549, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
+      propertyPath: _playerHpSliderGUI
+      value: 
+      objectReference: {fileID: 614776182}
     - target: {fileID: 6836238189293492664, guid: 529638263beaa69408bcbc9bdbb2397c, type: 3}
       propertyPath: playOnAwake
       value: 0

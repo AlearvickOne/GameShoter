@@ -12,6 +12,7 @@ public class AnimationManager : AwakeMonoBehaviour
     [SerializeField] private Animator _playerAnimator;
     private int PLAYER_ANIM_IDLE = Animator.StringToHash("Player_Idle");
     private int PLAYER_ANIM_RUN = Animator.StringToHash("Player_Run");
+    private int PLAYER_ANIM_DEAD = Animator.StringToHash("DEAD");
 
     [Header("Monsters Animations")]
     private AiMonsters[] _aiMonsters;
@@ -57,12 +58,18 @@ public class AnimationManager : AwakeMonoBehaviour
     #region [PLAYER ANIMATIONS]
     private void PlayerAnimations(bool playerIsMove)
     {
-        if (playerIsMove == true)
-            _playerAnimator.SetTrigger(PLAYER_ANIM_RUN);
-        if (playerIsMove == false)
-            _playerAnimator.SetTrigger(PLAYER_ANIM_IDLE);
+        switch (playerIsMove)
+        {
+            case true:
+                _playerAnimator.SetTrigger(PLAYER_ANIM_RUN);
+                break;
+            case false:
+                _playerAnimator.SetTrigger(PLAYER_ANIM_IDLE);
+                break;
+        }
 
-
+        if (_pCharacter._playerHealth <= 0)
+            _playerAnimator.SetTrigger(PLAYER_ANIM_DEAD);
     }
     #endregion
 
