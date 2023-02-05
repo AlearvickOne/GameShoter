@@ -1,18 +1,23 @@
 using UnityEngine;
 
+/// <summary>
+/// Activation of weapon icons in the GUI, if it is activated by the player.
+/// </summary>
 public class SlotWeaponActivatedGUI : AwakeMonoBehaviour
 {
+    int ANIM_ACTIVE_SLOT = Animator.StringToHash("WeaponSells");
+
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private GameObject[] _weapons;
     [SerializeField] private Animator[] _GUIAnimator;
 
-    int ANIM_ACTIVE_SLOT = Animator.StringToHash("WeaponSells");
-
-    void Update()
+    private void Update()
     {
         SlotAndAnimationRatio();
     }
 
-    void SlotAndAnimationRatio()
+    private void SlotAndAnimationRatio()
     {
         for (int i = 0; i < _weapons.Length; i++)
         {

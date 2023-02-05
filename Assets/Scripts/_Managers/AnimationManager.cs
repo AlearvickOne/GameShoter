@@ -1,27 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Contains animations of the player, most monsters and weapons.
+/// </summary>
 public class AnimationManager : AwakeMonoBehaviour
 {
-    [Header("Scripts")]
-    private PlayerCharacter _pCharacter;
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private MonstersSpawn _mSpawns;
+    private PlayerCharacter _pCharacter;
 
-    [Header("Player Animations")]
+    [Header("                         PLAYER ANIMATIONS")]
+    [Space(10)]
     [SerializeField] private Animator _playerAnimator;
     private int PLAYER_ANIM_IDLE = Animator.StringToHash("Player_Idle");
     private int PLAYER_ANIM_RUN = Animator.StringToHash("Player_Run");
     private int PLAYER_ANIM_DEAD = Animator.StringToHash("DEAD");
 
-    [Header("Monsters Animations")]
+    [Header("                         MONSTER ANIMATIONS")]
     private AiMonsters[] _aiMonsters;
     private int MONSTERGREEN_ANIM_IDLE = Animator.StringToHash("MonsterGreenIdle");
     private int MONSTERGREEN_ANIM_RUN = Animator.StringToHash("MonsterGreenRun");
     private int MONSTERGREENBIG_ANIM_IDLE = Animator.StringToHash("MonsterBigGreenIdle");
     private int MONSTERGREENBIG_ANIM_RUN = Animator.StringToHash("MonsterBigGreenRun");
 
-    [Header("Weapons Animations")]
+    [Header("                         WEAPON ANIMATIONS")]
+    [Space(10)]
     [SerializeField] private GameObject[] _weapons;
     private int WEAPON_ANIM_ALL = Animator.StringToHash("Weapons");
     private int WEAPON_PISTOLET_ANIM_IDLE = Animator.StringToHash("PistoletIdle");
@@ -37,7 +40,7 @@ public class AnimationManager : AwakeMonoBehaviour
         FindGetComponents();
     }
 
-    void FindGetComponents()
+    private void FindGetComponents()
     {
         _pCharacter = _playerAnimator.GetComponent<PlayerCharacter>();
 

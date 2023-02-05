@@ -1,17 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+/// <summary>
+/// Responsible for activating the player's weapon when pressing the keys, if it is in the inventory.
+/// </summary>
 public class ButtonsActiveWeaponInPlayer : AwakeMonoBehaviour
 {
+    [Header("                             OBJECTS")]
+    [Space(10)]
+    [SerializeField] private TMP_Text _ammoQuantityText;
     [SerializeField] protected internal GameObject _weaponFolderInPlayer;
+    [Header("                             SCRIPTS")]
+    [Space(10)]
+    private SelectionAmmoIsGround _selectionAmmoIsGround;
+    [Header("                             ARRAYS")]
     [Space(10)]
     [SerializeField] private List<GameObject> _weaponsArray;
     [SerializeField] protected internal List<bool> _weaponIsSelect;
-    private SelectionAmmoIsGround _selectionAmmoIsGround;
-    [Header("Text GUI")]
-    [SerializeField] private TMP_Text _ammoQuantityText;
 
     private void Start()
     {

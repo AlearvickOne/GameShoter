@@ -1,11 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Picking up weapons from the ground and transferring them to inventory.
+/// </summary>
+
 public class WeaponSelectionInActivate : AwakeMonoBehaviour
 {
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private ButtonsActiveWeaponInPlayer _buttonsActiveWeaponInPlayer;
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private Transform _weaponLevelFolder;
+    [Header("                             ARRAYS")]
+    [Space(10)]
     [SerializeField] private List<BoxCollider> _weaponsLevelColliders;
 
     private void Start()

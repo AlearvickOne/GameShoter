@@ -1,23 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Main characteristics of the weapons.
+/// </summary>
 public class WeaponCharacters : AwakeMonoBehaviour
 {
-
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private protected Transform _duloFireTransform;
     [SerializeField] private protected ParticleSystem _firePart;
-    [Header("WeaponCharacters")]
+    [SerializeField] private protected Animator _playerAnim;
+    [Header("                             PARAMETERS")]
+    [Space(10)]
     [SerializeField] private protected AmmoType _ammoType;
     [SerializeField] private protected float _rpm;
     [SerializeField] private protected float _rpmTimer;
     [SerializeField] protected internal int _ammoShopQuantity;
-    [Header("Audio")]
+    [Header("                               AUDIO")]
+    [Space(10)]
     [SerializeField] private protected AudioSource _weaponSounds;
     [SerializeField] private protected AudioClip _fireSound;
-    [Header("Animations")]
-    [SerializeField] private protected Animator _playerAnim;
-
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private protected AmmoForwardToPoint _ammoForwardToPoint;
 
     private protected void Timers()
@@ -41,6 +44,8 @@ public class WeaponCharacters : AwakeMonoBehaviour
 
                 if(Physics.Raycast(ray, out hit))
                 {
+                    Debug.Log($"RAY {ray.direction}" );
+
                     Debug.DrawRay(_duloFireTransform.position, frw * 100, Color.green, 1);
                     _firePart.Play();
                     _weaponSounds.PlayOneShot(_fireSound);

@@ -8,7 +8,7 @@ public struct AiMonsters
     public Animator monsterAnimation;
 }
 
-public enum AmmoType { ammoAutomat, ammoPistolet, ammoRacketnica }
+public enum AmmoType {bossAmmo, ammoAutomat, ammoPistolet, ammoRacketnica }
 public struct WeaponsAmmoStruct
 {
     public GameObject bullet;

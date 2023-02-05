@@ -1,30 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-
+/// <summary>
+/// Controls the AI of most monsters.
+/// </summary>
 public class MonstersAiController : AwakeMonoBehaviour
 {
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private MonstersSpawn _mSpawn;
-    [SerializeField] private GameObject _player;
     private PlayerCharacter _playerCharacter;
+    [Header("                             OBJECTS")]
+    [Space(10)]
+    [SerializeField] private GameObject _player;
 
     protected internal AiMonsters[] _aiMonsters;
     protected internal const float _startSpeed = 10;
 
-    void Start()
+    private void Start()
     {
         FindGetComponents();
         StartCoroutine(MonsterMoveToPointAndAttack(_aiMonsters));
     }
 
-    void FindGetComponents()
+    private void FindGetComponents()
     {
         _aiMonsters = _mSpawn._aiMonsters;
         _playerCharacter = _player.GetComponent<PlayerCharacter>();
     }
 
-    IEnumerator MonsterMoveToPointAndAttack(AiMonsters[] aiMonsters)
+    private IEnumerator MonsterMoveToPointAndAttack(AiMonsters[] aiMonsters)
     {
         while (true)
         {
@@ -36,13 +40,11 @@ public class MonstersAiController : AwakeMonoBehaviour
                     aiMonsters[i].monsterAgent.speed = _startSpeed;
                     aiMonsters[i].monsterAgent.destination = _player.transform.position;
                 }
-                else if (dist < 2)
+                else if (dist < 2 && aiMonsters[i].monsterAgent.gameObject.activeSelf != false)
                 {
                     aiMonsters[i].monsterAgent.speed = 0;
                     float randDamage = Random.Range(1.0f, 5.0f);
                     _playerCharacter._playerHealth -= randDamage;
-                    Debug.Log(randDamage);
-                    Debug.Log("HP " + _playerCharacter._playerHealth);
                 }
             }
             yield return null;

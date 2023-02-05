@@ -1,24 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Creating bullets at the beginning of the game for their subsequent use.
+/// </summary>
 public class AmmoSpawnStart : AwakeMonoBehaviour
 {
-    protected internal WeaponsAmmoStruct[] _weaponsAmmoStruct;
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private GameObject[] bullets;
     [SerializeField] private Transform[] ammoBandoliers;
+    [Header("                             PARAMETERS")]
+    [Space(10)]
     [SerializeField] private int spawnPistoletAmmoQuantity;
     [SerializeField] private int spawnAutomatAmmoQuantity;
     [SerializeField] private int spawnRacketnicaAmmoQuantity;
 
-    void Awake()
+    protected internal WeaponsAmmoStruct[] _weaponsAmmoStruct;
+
+    private void Awake()
     {
-        int allAmmoSpawn = spawnRacketnicaAmmoQuantity + spawnAutomatAmmoQuantity + spawnRacketnicaAmmoQuantity;
+        int ammoSum1 = spawnAutomatAmmoQuantity + spawnPistoletAmmoQuantity;
+        int ammoSum2 = ammoSum1 + spawnRacketnicaAmmoQuantity;
+
+        int allAmmoSpawn = ammoSum2;
         _weaponsAmmoStruct = new WeaponsAmmoStruct[allAmmoSpawn];
         SpawnAmmo();
     }
 
-    void SpawnAmmo()
+    private void SpawnAmmo()
     {
         int pistolet = 0;
         int automat = 1;
@@ -41,7 +50,7 @@ public class AmmoSpawnStart : AwakeMonoBehaviour
         }
     }
 
-    void Spawn(int i, int indexWeapon, AmmoType ammoType)
+    private void Spawn(int i, int indexWeapon, AmmoType ammoType)
     {
         if (_weaponsAmmoStruct[i].isFull == false)
         {

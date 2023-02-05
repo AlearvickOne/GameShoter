@@ -1,18 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Determines where to move the ammunition after the shot.
+/// </summary>
 public class AmmoForwardToPoint : AwakeMonoBehaviour
 {
-
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private AmmoSpawnStart _ammoSpawnStart;
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private Transform[] _weaponDulo;
+    [Header("                             ARRAYS")]
+    [Space(10)]
     [SerializeField] private List<Rigidbody> _ammoBulletsRigidbody;
-    WeaponsAmmoStruct[] _weaponsAmmoStruct;
+
+    private WeaponsAmmoStruct[] _weaponsAmmoStruct;
     protected internal Vector3 _firePoint;
     protected internal AmmoType _ammoType;
 
-    void Start()
+    private void Start()
+    {
+        FindComponents();
+    }
+
+    private void FindComponents()
     {
         _weaponsAmmoStruct = _ammoSpawnStart._weaponsAmmoStruct;
         for (int i = 0; i < _weaponsAmmoStruct.Length; i++)
@@ -21,60 +33,43 @@ public class AmmoForwardToPoint : AwakeMonoBehaviour
         }
     }
 
-    public void FireBulletForward()
+    protected internal void FireBulletForward()
     {
-        Debug.Log(_ammoType);
         switch (_ammoType)
         {
             case AmmoType.ammoPistolet:
-                for (int i = 0; i < _ammoSpawnStart._weaponsAmmoStruct.Length; i++)
-                {
-                    if (_weaponsAmmoStruct[i].bullet.activeSelf == false && _weaponsAmmoStruct[i].ammoType == AmmoType.ammoPistolet)
-                    {
-                        FireBulletForwardParameters(i, 0);
-                        break;
-                    }
-                }
+                FindBulletOnStruct(AmmoType.ammoPistolet, 0);
                 break;
             case AmmoType.ammoAutomat:
-                for (int i = 0; i < _ammoSpawnStart._weaponsAmmoStruct.Length; i++)
-                {
-                    if (_weaponsAmmoStruct[i].bullet.activeSelf == false && _weaponsAmmoStruct[i].ammoType == AmmoType.ammoAutomat)
-                    {
-                        FireBulletForwardParameters(i, 1);
-                        break;
-                    }
-                }
+                FindBulletOnStruct(AmmoType.ammoAutomat, 1);
                 break;
             case AmmoType.ammoRacketnica:
-                for (int i = 0; i < _ammoSpawnStart._weaponsAmmoStruct.Length; i++)
-                {
-                    if (_weaponsAmmoStruct[i].bullet.activeSelf == false && _weaponsAmmoStruct[i].ammoType == AmmoType.ammoRacketnica)
-                    {
-                        FireBulletForwardParameters(i, 2);
-                        break;
-                    }
-                }
+                FindBulletOnStruct(AmmoType.ammoRacketnica, 2);
                 break;
         }
-
     }
 
-    void FireBulletForwardParameters(int i, int weaponIndex)
+    private void FindBulletOnStruct(AmmoType ammoType, int nomberWeapon)
     {
-        Vector3 pos = Vector3.zero;
+        for (int i = 0; i < _ammoSpawnStart._weaponsAmmoStruct.Length; i++)
+        {
+            if (_weaponsAmmoStruct[i].bullet.activeSelf == false && _weaponsAmmoStruct[i].ammoType == ammoType)
+            {
+                FireBulletForwardParameters(i, nomberWeapon);
+                break;
+            }
+        }
+    }
 
+    private void FireBulletForwardParameters(int i, int weaponIndex)
+    {
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.SetActive(true);
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.transform.position = _weaponDulo[weaponIndex].position;
 
-        float dist = Vector3.Distance(_weaponDulo[weaponIndex].position, _firePoint);
-
-        if(dist < 5)
-            pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 30 * Time.deltaTime);
-        else
-            pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 10 * Time.deltaTime);
+        Vector3 pos = Vector3.MoveTowards(_weaponDulo[weaponIndex].position, _firePoint, 10 * Time.deltaTime);
 
         _ammoBulletsRigidbody[i].velocity = (_firePoint - pos) * 1;
         _ammoSpawnStart._weaponsAmmoStruct[i].bullet.transform.LookAt(pos);
+
     }
 }

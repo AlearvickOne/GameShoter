@@ -1,15 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Responsible for the selection of bullet magazines in contact with the player 
+/// and their subsequent distribution by weapon.
+/// </summary>
 public class SelectionAmmoIsGround : MonoBehaviour
 {
-    [Header("Other Scripts")]
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private ListSpawnAmmoShops _listSpawnAmmoShops;
-    [Space(20)]
+    [Header("                             ARRAYS")]
+    [Space(10)]
     [SerializeField] private Weapons[] _weaponsScripts;
 
-    [Header("All Ammo Quantity Information")]
+    [Header("                  ALL AMMO QUANTITY INFORMATION")]
+    [Space(10)]
     [SerializeField] protected internal int _pistoletQuantity;
     [SerializeField] protected internal int _automatQuantity;
     [SerializeField] protected internal int _racketinicaQuantity;
@@ -19,7 +23,7 @@ public class SelectionAmmoIsGround : MonoBehaviour
         AllAmmoQuantityInformation();
     }
 
-    void AllAmmoQuantityInformation()
+    private void AllAmmoQuantityInformation()
     {
         _pistoletQuantity = _weaponsScripts[0]._ammoShopQuantity;
         _automatQuantity = _weaponsScripts[1]._ammoShopQuantity;

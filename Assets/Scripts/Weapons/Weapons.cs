@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Setting up characteristics for a specific weapon.
+/// </summary>
 public class Weapons : WeaponCharacters
 {
-    void OnEnable()
+    private void OnEnable()
     {
         _ammoForwardToPoint._ammoType = _ammoType;
         _weaponSounds = GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void Update()
     {
         Timers();
         FireWeapon(_rpm);

@@ -2,13 +2,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+/// <summary>
+/// Basic Player Settings.
+/// </summary>
+
 public class PlayerCharacter : AwakeMonoBehaviour
 {
-    protected internal NavMeshAgent _playerAgent;
-    private Camera _cam;
-    protected internal float _playerHealth = 1000;
+    [Header("                             OBJECTS")]
+    [Space(10)]
     [SerializeField] private Slider _playerHpSliderGUI;
-    [SerializeField] protected internal bool _playerIsMove;
+    private Camera _cam;
+    protected internal NavMeshAgent _playerAgent;
+    [Header("                             PARAMETERS")]
+    protected internal bool _playerIsMove;
+    protected internal float _playerHealth = 1000;
 
     private void Start()
     {

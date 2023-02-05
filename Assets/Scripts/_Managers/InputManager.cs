@@ -1,15 +1,20 @@
 using UnityEngine;
 
+/// <summary>
+/// A script for assigning control to a character and everything related to it.
+/// </summary>
+
 public class InputManager : AwakeMonoBehaviour
 {
+    [Header("                             SCRIPTS")]
+    [Space(10)]
     [SerializeField] private PlayerCharacter _pCharacter;
 
     private void Update()
     {
         PlayerMovePosition();
     }
-
-    void PlayerMovePosition()
+    private void PlayerMovePosition()
     {
         if (Input.GetMouseButton(1))
         {

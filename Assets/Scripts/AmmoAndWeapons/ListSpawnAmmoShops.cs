@@ -1,17 +1,21 @@
 using UnityEngine;
-
+/// <summary>
+/// Creating bullet magazines at the beginning of the game for later use.
+/// </summary>
 public class ListSpawnAmmoShops : AwakeMonoBehaviour
 {
-    [SerializeField] private GameObject[] _ammoShops;
+    [Header("                             OBJECTS")]
     [Space(10)]
+    [SerializeField] private GameObject[] _ammoShops;
+    
     protected internal AmmoShopsStruct[] _ammoShopsStruct;
 
-    void Start()
+    private void Start()
     {
         StartSpawnAmmoShops();
     }
 
-    void StartSpawnAmmoShops()
+    private void StartSpawnAmmoShops()
     {
         _ammoShopsStruct = new AmmoShopsStruct[20];
         for (int i = 0; i < _ammoShopsStruct.Length; i++)
@@ -39,7 +43,7 @@ public class ListSpawnAmmoShops : AwakeMonoBehaviour
         }
     }
 
-    void AmmoShopsSpawnType(int i ,AmmoType ammoType)
+    private void AmmoShopsSpawnType(int i, AmmoType ammoType)
     {
         _ammoShopsStruct[i].ammoShopType = ammoType;
     }

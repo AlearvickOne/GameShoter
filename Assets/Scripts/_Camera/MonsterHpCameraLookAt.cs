@@ -1,16 +1,16 @@
 using UnityEngine;
-
-public class MonsterHpCameraLookAt : MonoBehaviour
+/// <summary>
+/// Turns the GUI monster HP front to the camera.
+/// </summary>
+public class MonsterHpCameraLookAt : AwakeMonoBehaviour
 {
-    Camera cam;
-
-    void Start()
+    private void Update()
     {
-        cam = Camera.main;
+        GUILookAtCamera();
     }
 
-    void Update()
+    void GUILookAtCamera()
     {
-        transform.LookAt(cam.transform);
+        transform.LookAt(Camera.main.transform);
     }
 }
