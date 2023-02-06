@@ -12,24 +12,6 @@ public class SelectionAmmoIsGround : MonoBehaviour
     [Space(10)]
     [SerializeField] private Weapons[] _weaponsScripts;
 
-    [Header("                  ALL AMMO QUANTITY INFORMATION")]
-    [Space(10)]
-    [SerializeField] protected internal int _pistoletQuantity;
-    [SerializeField] protected internal int _automatQuantity;
-    [SerializeField] protected internal int _racketinicaQuantity;
-
-    private void Update()
-    {
-        AllAmmoQuantityInformation();
-    }
-
-    private void AllAmmoQuantityInformation()
-    {
-        _pistoletQuantity = _weaponsScripts[0]._ammoShopQuantity;
-        _automatQuantity = _weaponsScripts[1]._ammoShopQuantity;
-        _racketinicaQuantity = _weaponsScripts[2]._ammoShopQuantity;
-    }
-
     private void OnTriggerStay(Collider other)
     {
         AmmoAdding(other);
@@ -44,23 +26,23 @@ public class SelectionAmmoIsGround : MonoBehaviour
                 switch (_listSpawnAmmoShops._ammoShopsStruct[i].ammoShopType)
                 {
                     case AmmoType.ammoPistolet:
-                        AddAmmoToShopAndDeactiveObjectAmmoShop(i, 0, 20, 40);
+                        SaveSceneParametersObjects._singleton._pistoletAmmoQuantity += RandomQuantity(i, 10, 15);
                         break;
                     case AmmoType.ammoAutomat:
-                        AddAmmoToShopAndDeactiveObjectAmmoShop(i, 1, 30, 50);
+                         SaveSceneParametersObjects._singleton._automatAmmoQuantity += RandomQuantity(i, 30, 50);
                         break;
                     case AmmoType.ammoRacketnica:
-                        AddAmmoToShopAndDeactiveObjectAmmoShop(i, 2, 10, 20);
+                        SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity += RandomQuantity(i, 30, 50);
                         break;
                 }
             }
         }
     }
 
-    private void AddAmmoToShopAndDeactiveObjectAmmoShop(int i, int nomberWeapon, int minAmmoRandom, int MaxAmmoRandom)
+    private int RandomQuantity(int i, int minAmmoRandom, int MaxAmmoRandom)
     {
-        _weaponsScripts[nomberWeapon]._ammoShopQuantity += Random.Range(minAmmoRandom, MaxAmmoRandom);
+        int ammoQuantity = Random.Range(minAmmoRandom, MaxAmmoRandom);
         _listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.gameObject.SetActive(false);
-
+        return ammoQuantity;
     }
 }

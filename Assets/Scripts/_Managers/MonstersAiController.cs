@@ -44,7 +44,7 @@ public class MonstersAiController : AwakeMonoBehaviour
                 {
                     aiMonsters[i].monsterAgent.speed = 0;
                     float randDamage = Random.Range(1.0f, 5.0f);
-                    _playerCharacter._playerHealth -= randDamage;
+                    SaveSceneParametersObjects._singleton._playerHealth -= randDamage;
                 }
             }
             yield return null;

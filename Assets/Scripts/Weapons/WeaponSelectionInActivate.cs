@@ -32,19 +32,21 @@ public class WeaponSelectionInActivate : AwakeMonoBehaviour
     {
         for (int i = 0; i < _weaponsLevelColliders.Count; i++)
         {
-            switch (i)
+            if (other == _weaponsLevelColliders[i])
             {
-                case 0:
-                case 1:
-                case 2:
-
-                    if (other == _weaponsLevelColliders[i])
-                    {
-                        _buttonsActiveWeaponInPlayer._weaponIsSelect[i] = true;
-                        Destroy(_weaponsLevelColliders[i].gameObject);
-                    }
-
-                    break;
+                switch (i)
+                {
+                    case 0:
+                        SaveSceneParametersObjects._singleton._wpnPistoletIsSelected = true;
+                        break;
+                    case 1:
+                        SaveSceneParametersObjects._singleton._wpnAutomatIsSelected = true;
+                        break;
+                    case 2:
+                        SaveSceneParametersObjects._singleton._wpnRacketnicaIsSelected = true;
+                        break;
+                }
+                Destroy(_weaponsLevelColliders[i].gameObject);
             }
         }
     }

@@ -71,7 +71,7 @@ public class AnimationManager : AwakeMonoBehaviour
                 break;
         }
 
-        if (_pCharacter._playerHealth <= 0)
+        if (SaveSceneParametersObjects._singleton._playerHealth <= 0)
             _playerAnimator.SetTrigger(PLAYER_ANIM_DEAD);
     }
     #endregion

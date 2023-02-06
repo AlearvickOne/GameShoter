@@ -19,7 +19,7 @@ public class BossBulletDamageToPlayer : MonoBehaviour
             BoxCollider bulletColl = _bossSpawnAmmo._ammoBossStruct[i].bulletBossCollider;
             if (gameObject != null && other == bulletColl && bulletBoss != false)
             {
-                _pCharacter._playerHealth -= 50;
+                SaveSceneParametersObjects._singleton._playerHealth -= 50;
             }
         }
 

@@ -40,9 +40,13 @@ public class ButtonsActiveWeaponInPlayer : AwakeMonoBehaviour
 
     private void ActivateWeaponButton()
     {
-        ParametersActivate(KeyCode.Alpha1, _weaponIsSelect[0],0);
-        ParametersActivate(KeyCode.Alpha2, _weaponIsSelect[1], 1);
-        ParametersActivate(KeyCode.Alpha3, _weaponIsSelect[2], 2);
+        int wpnPistolet = 0;
+        int wpnAutomat = 1;
+        int wpnRacketnica = 2;
+
+        ParametersActivate(KeyCode.Alpha1, SaveSceneParametersObjects._singleton._wpnPistoletIsSelected, wpnPistolet);
+        ParametersActivate(KeyCode.Alpha2, SaveSceneParametersObjects._singleton._wpnAutomatIsSelected, wpnAutomat);
+        ParametersActivate(KeyCode.Alpha3, SaveSceneParametersObjects._singleton._wpnRacketnicaIsSelected, wpnRacketnica);
 
         AmmoTextToGUI();
     }
@@ -82,13 +86,13 @@ public class ButtonsActiveWeaponInPlayer : AwakeMonoBehaviour
                 switch (i)
                 {
                     case 0:
-                        AssigningAmmoToText(_selectionAmmoIsGround._pistoletQuantity);
+                        AssigningAmmoToText(SaveSceneParametersObjects._singleton._pistoletAmmoQuantity);
                         break;
                     case 1:
-                        AssigningAmmoToText(_selectionAmmoIsGround._automatQuantity);
+                        AssigningAmmoToText(SaveSceneParametersObjects._singleton._automatAmmoQuantity);
                         break;
                     case 2:
-                        AssigningAmmoToText(_selectionAmmoIsGround._racketinicaQuantity);
+                        AssigningAmmoToText(SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity);
                         break;
                 }
             }

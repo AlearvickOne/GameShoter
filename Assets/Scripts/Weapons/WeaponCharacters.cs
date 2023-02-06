@@ -22,6 +22,16 @@ public class WeaponCharacters : AwakeMonoBehaviour
     [Header("                             SCRIPTS")]
     [Space(10)]
     [SerializeField] private protected AmmoForwardToPoint _ammoForwardToPoint;
+    private void RotationPlayer()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitPlayer;
+
+        if (Physics.Raycast(ray, out hitPlayer))
+        {
+            _playerAnim.transform.LookAt(hitPlayer.point);
+        }
+    }
 
     private protected void Timers()
     {
@@ -49,7 +59,7 @@ public class WeaponCharacters : AwakeMonoBehaviour
                     Debug.DrawRay(_duloFireTransform.position, frw * 100, Color.green, 1);
                     _firePart.Play();
                     _weaponSounds.PlayOneShot(_fireSound);
-                    _ammoShopQuantity--;
+                    AmmoQuantityDown();
                     _ammoForwardToPoint._firePoint = hit.point;
                     _ammoForwardToPoint.FireBulletForward();
                 }
@@ -58,14 +68,19 @@ public class WeaponCharacters : AwakeMonoBehaviour
         }
     }
 
-    private void RotationPlayer()
+    private protected void AmmoQuantityDown()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitPlayer;
-
-        if (Physics.Raycast(ray, out hitPlayer))
+        switch (_ammoType)
         {
-            _playerAnim.transform.LookAt(hitPlayer.point);
+            case AmmoType.ammoPistolet:
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._pistoletAmmoQuantity--;
+                break;
+            case AmmoType.ammoAutomat:
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._automatAmmoQuantity--;
+                break;
+            case AmmoType.ammoRacketnica:
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity--;
+                break;
         }
     }
 }
