@@ -59,7 +59,7 @@ public class WeaponCharacters : AwakeMonoBehaviour
                     Debug.DrawRay(_duloFireTransform.position, frw * 100, Color.green, 1);
                     _firePart.Play();
                     _weaponSounds.PlayOneShot(_fireSound);
-                    AmmoQuantityDown();
+                    WeaponAmmoQuantity(1);
                     _ammoForwardToPoint._firePoint = hit.point;
                     _ammoForwardToPoint.FireBulletForward();
                 }
@@ -68,18 +68,18 @@ public class WeaponCharacters : AwakeMonoBehaviour
         }
     }
 
-    private protected void AmmoQuantityDown()
+    private protected void WeaponAmmoQuantity(int minusQuantity)
     {
         switch (_ammoType)
         {
             case AmmoType.ammoPistolet:
-                _ammoShopQuantity = SaveSceneParametersObjects._singleton._pistoletAmmoQuantity--;
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._pistoletAmmoQuantity -= minusQuantity;
                 break;
             case AmmoType.ammoAutomat:
-                _ammoShopQuantity = SaveSceneParametersObjects._singleton._automatAmmoQuantity--;
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._automatAmmoQuantity -= minusQuantity;
                 break;
             case AmmoType.ammoRacketnica:
-                _ammoShopQuantity = SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity--;
+                _ammoShopQuantity = SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity -= minusQuantity;
                 break;
         }
     }

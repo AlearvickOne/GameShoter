@@ -63,6 +63,7 @@
     <Compile Include="Assets\_Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Scripts\Monsters\MonstersSpawn.cs" />
     <Compile Include="Assets\Scripts\Monsters\Boss\BossSpawnAmmo.cs" />
+    <Compile Include="Assets\Scripts\NewScripts\SaveParametersScripts\StructsSave.cs" />
     <Compile Include="Assets\Scripts\Weapons\DeactiveAmmoBullets.cs" />
     <Compile Include="Assets\Scripts\AmmoAndWeapons\ListSpawnAmmoShops.cs" />
     <Compile Include="Assets\Scripts\Monsters\Boss\BossBulletDamageToPlayer.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Structs.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\NewScripts\SaveParametersScripts\SaveSceneParametersObjects.cs" />
     <Compile Include="Assets\Scripts\_Camera\MonsterHpCameraLookAt.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\_AwakeMonoBehaviour\AwakeMonoBehaviour.cs" />
@@ -121,7 +123,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\_Managers\InputManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\NewScripts\SaveParametersScripts\SaveSceneParametersObjects.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Boss\BossDamagerWeapons.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

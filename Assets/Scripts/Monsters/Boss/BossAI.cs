@@ -5,7 +5,7 @@ using UnityEngine.AI;
 /// The script is responsible for AI and boss animation.
 /// </summary>
 
-public class BossAI : AwakeMonoBehaviour
+public class BossAI : StructsSave
 {
     private readonly int BOSS_ANIM_IDLE = Animator.StringToHash("BossIdle");
     private readonly int BOSS_ANIM_RUN = Animator.StringToHash("BossRun");
@@ -26,7 +26,6 @@ public class BossAI : AwakeMonoBehaviour
     [Header("                             SCRIPTS")]
     [Space(10)]
     [SerializeField] private AmmoForwardToPoint _ammoForwardToPoint;
-    [SerializeField] private MonsterDamagerAndShopSpawns _monsterDmgScript;
 
     private void Awake()
     {
@@ -40,6 +39,8 @@ public class BossAI : AwakeMonoBehaviour
     private void FindComponents()
     {
         _bossTransform = _bossAgent.GetComponent<Transform>();
+        _bossHP = 10000;
+        _bossIsDead = false;
     }
 
     private void BossMoveToPlayer()
@@ -49,19 +50,19 @@ public class BossAI : AwakeMonoBehaviour
         float bossMaxDist = 50;
         _bossAgent.stoppingDistance = bossMinDist;
 
-        if (dist <= bossMinDist && _monsterDmgScript._monsterIsDead == false)
+        if (dist <= bossMinDist && _bossIsDead == false)
         {
             _bossTransform.LookAt(_player);
             ActiveAnimations(BOSS_ANIM_IDLE, BOSS_ANIM_IDLE_ATTACK);
         }
-        else if (dist > bossMinDist && dist <= bossMaxDist && _monsterDmgScript._monsterIsDead == false)
+        else if (dist > bossMinDist && dist <= bossMaxDist && _bossIsDead == false)
         {
             _bossAgent.speed = _bossSpeed;
             _bossAgent.destination = _player.position;
             _bossTransform.LookAt(_player);
             ActiveAnimations(BOSS_ANIM_RUN, BOSS_ANIM_RUN_ATTACK);
         }
-        else if (dist > bossMaxDist && _monsterDmgScript._monsterIsDead == false)
+        else if (dist > bossMaxDist && _bossIsDead == false)
         {
             _bossAgent.speed = 0;
             AnimationBossPlay(BOSS_ANIM_IDLE);
@@ -88,7 +89,6 @@ public class BossAI : AwakeMonoBehaviour
         if (_bossAnimator != null)
         {
             _bossAnimator.SetTrigger(nameAnim);
-            Debug.Log(nameAnim);
         }
     }
     private void BossAttack(int nameAnim)

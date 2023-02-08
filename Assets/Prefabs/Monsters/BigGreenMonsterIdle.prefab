@@ -793,6 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpSlider: {fileID: 0}
+  _parentObj: {fileID: 7214385819176001348}
 --- !u!1 &5382516548301677685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ammoSpawnStart: {fileID: 2774478443161487109, guid: 0c0b0fab15363334b9b121aea4e7a94d, type: 3}
   _listSpawnAmmoShops: {fileID: 0}
-  _monsterHp: 40
+  _monsterAnimator: {fileID: 0}
 --- !u!1 &8073653097743250695
 GameObject:
   m_ObjectHideFlags: 0

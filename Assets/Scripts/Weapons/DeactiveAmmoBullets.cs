@@ -23,6 +23,7 @@ class DeactiveAmmoBullets : AwakeMonoBehaviour
         yield return _waitForSeconds = new WaitForSeconds(0.1f);
         this._partBoom.Stop();
         this.gameObject.SetActive(false);
+        this.transform.position = Vector3.zero;
     }
 
     private void Deactive(Collider other)
@@ -35,7 +36,11 @@ class DeactiveAmmoBullets : AwakeMonoBehaviour
                 StartCoroutine(ITimerDeactive());
             }
             else
+            {
                 this.gameObject.SetActive(false);
+                this.transform.position = Vector3.zero;
+            }
+
         }
     }
 }

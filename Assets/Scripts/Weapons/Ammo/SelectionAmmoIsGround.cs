@@ -3,11 +3,8 @@ using UnityEngine;
 /// Responsible for the selection of bullet magazines in contact with the player 
 /// and their subsequent distribution by weapon.
 /// </summary>
-public class SelectionAmmoIsGround : MonoBehaviour
+public class SelectionAmmoIsGround : StructsSave
 {
-    [Header("                             SCRIPTS")]
-    [Space(10)]
-    [SerializeField] private ListSpawnAmmoShops _listSpawnAmmoShops;
     [Header("                             ARRAYS")]
     [Space(10)]
     [SerializeField] private Weapons[] _weaponsScripts;
@@ -19,11 +16,11 @@ public class SelectionAmmoIsGround : MonoBehaviour
 
     private void AmmoAdding(Collider other)
     {
-        for (int i = 0; i < _listSpawnAmmoShops._ammoShopsStruct.Length; i++)
+        for (int i = 0; i < _ammoShopsStructs.Length; i++)
         {
-            if (_listSpawnAmmoShops._ammoShopsStruct[i].ammoShopColl == other)
+            if (_ammoShopsStructs[i].ammoShopColl == other)
             {
-                switch (_listSpawnAmmoShops._ammoShopsStruct[i].ammoShopType)
+                switch (_ammoShopsStructs[i].ammoShopType)
                 {
                     case AmmoType.ammoPistolet:
                         SaveSceneParametersObjects._singleton._pistoletAmmoQuantity += RandomQuantity(i, 10, 15);
@@ -42,7 +39,7 @@ public class SelectionAmmoIsGround : MonoBehaviour
     private int RandomQuantity(int i, int minAmmoRandom, int MaxAmmoRandom)
     {
         int ammoQuantity = Random.Range(minAmmoRandom, MaxAmmoRandom);
-        _listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.gameObject.SetActive(false);
+        _ammoShopsStructs[i].ammoShop.gameObject.SetActive(false);
         return ammoQuantity;
     }
 }

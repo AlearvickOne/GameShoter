@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// The script is responsible for attacking the boss on the target.
 /// </summary>
-public class BossAttack : AwakeMonoBehaviour
+public class BossAttack : StructsSave
 {
     [Header("                             OBJECTS")]
     [Space(10)]
@@ -13,7 +13,6 @@ public class BossAttack : AwakeMonoBehaviour
     [Header("                             SCRIPTS")]
     [Space(10)]
     [SerializeField] private BossAI _bossAI;
-    [SerializeField] private MonsterDamagerAndShopSpawns _monsterDmgScript;
     [Header("                             PARAMETERS")]
     [Space(10)]
     private float _timeRpm;
@@ -34,7 +33,7 @@ public class BossAttack : AwakeMonoBehaviour
 
     private void TimeRpmAttack(float maxTime, Transform weaponBossName, bool oneShot)
     {
-        if (_timeRpm > maxTime && _oneShot == oneShot && _bossAI._bossSeePlayer == true && _monsterDmgScript._monsterIsDead == false)
+        if (_timeRpm > maxTime && _oneShot == oneShot && _bossAI._bossSeePlayer == true && _bossIsDead == false)
         {
             RayCastBossToPlayer(weaponBossName);
 
@@ -49,16 +48,16 @@ public class BossAttack : AwakeMonoBehaviour
 
     private void RayCastBossToPlayer(Transform weaponBossName)
     {
-        for (int i = 0; i < _bossSpawnAmmo._ammoBossStruct.Length; i++)
+        for (int i = 0; i < _ammoBossStructs.Length; i++)
         {
-            if (Physics.Raycast(weaponBossName.position, _playerTransform.position) && _bossSpawnAmmo._ammoBossStruct[i].bulletBoss.gameObject.activeSelf == false)
+            if (Physics.Raycast(weaponBossName.position, _playerTransform.position) && _ammoBossStructs[i].bulletBoss.gameObject.activeSelf == false)
             {
-                _bossSpawnAmmo._ammoBossStruct[i].bulletBoss.gameObject.SetActive(true);
+                _ammoBossStructs[i].bulletBoss.gameObject.SetActive(true);
                 Vector3 towards = Vector3.MoveTowards(weaponBossName.position, _playerTransform.position, 10 * Time.deltaTime);
                 Debug.DrawRay(weaponBossName.position, _playerTransform.position);
-                _bossSpawnAmmo._ammoBossStruct[i].bulletBoss.position = weaponBossName.position;
-                _bossSpawnAmmo._ammoBossStruct[i].bulletBoss.position = towards;
-                _bossSpawnAmmo._ammoBossStruct[i].bulletBossRigidbody.velocity = (_playerTransform.position - towards) * 2;
+                _ammoBossStructs[i].bulletBoss.position = weaponBossName.position;
+                _ammoBossStructs[i].bulletBoss.position = towards;
+                _ammoBossStructs[i].bulletBossRigidbody.velocity = (_playerTransform.position - towards) * 2;
                 _bossAudioSource.PlayOneShot(_fireAudio);
                 break;
             }

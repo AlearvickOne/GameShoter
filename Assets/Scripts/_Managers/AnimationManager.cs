@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// Contains animations of the player, most monsters and weapons.
 /// </summary>
-public class AnimationManager : AwakeMonoBehaviour
+public class AnimationManager : StructsSave
 {
     [Header("                             SCRIPTS")]
     [Space(10)]
@@ -17,7 +17,6 @@ public class AnimationManager : AwakeMonoBehaviour
     private int PLAYER_ANIM_DEAD = Animator.StringToHash("DEAD");
 
     [Header("                         MONSTER ANIMATIONS")]
-    private AiMonsters[] _aiMonsters;
     private int MONSTERGREEN_ANIM_IDLE = Animator.StringToHash("MonsterGreenIdle");
     private int MONSTERGREEN_ANIM_RUN = Animator.StringToHash("MonsterGreenRun");
     private int MONSTERGREENBIG_ANIM_IDLE = Animator.StringToHash("MonsterBigGreenIdle");
@@ -43,17 +42,14 @@ public class AnimationManager : AwakeMonoBehaviour
     private void FindGetComponents()
     {
         _pCharacter = _playerAnimator.GetComponent<PlayerCharacter>();
-
-        if (_mSpawns._aiMonsters != null)
-            _aiMonsters = _mSpawns._aiMonsters;
     }
 
     private void Update()
     {
         PlayerAnimations(_pCharacter._playerIsMove);
 
-        if (_aiMonsters != null)
-            MonstersAnimations(_aiMonsters);
+        if (_aiMonstersStructs != null)
+            MonstersAnimations(_aiMonstersStructs);
         if (_weapons != null)
             WeaponsAnimations();
     }
@@ -82,7 +78,7 @@ public class AnimationManager : AwakeMonoBehaviour
     {
         for (int i = 0; i < aiMonsters.Length; i++)
         {
-            aiMonsters[i].monsterAnimation = _aiMonsters[i].monsterAnimation;
+            aiMonsters[i].monsterAnimation = _aiMonstersStructs[i].monsterAnimation;
             if (aiMonsters != null)
             {
                 float dist = Vector3.Distance(_playerAnimator.transform.position, aiMonsters[i].monsterAnimation.transform.position);

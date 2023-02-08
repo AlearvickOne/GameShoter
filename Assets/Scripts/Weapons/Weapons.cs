@@ -14,5 +14,6 @@ public class Weapons : WeaponCharacters
     {
         Timers();
         FireWeapon(_rpm);
+        WeaponAmmoQuantity(0);
     }
 }

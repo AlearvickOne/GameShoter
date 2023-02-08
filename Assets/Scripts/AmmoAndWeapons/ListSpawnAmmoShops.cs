@@ -2,13 +2,11 @@ using UnityEngine;
 /// <summary>
 /// Creating bullet magazines at the beginning of the game for later use.
 /// </summary>
-public class ListSpawnAmmoShops : AwakeMonoBehaviour
+public class ListSpawnAmmoShops : StructsSave
 {
     [Header("                             OBJECTS")]
     [Space(10)]
     [SerializeField] private GameObject[] _ammoShops;
-    
-    protected internal AmmoShopsStruct[] _ammoShopsStruct;
 
     private void Start()
     {
@@ -17,14 +15,14 @@ public class ListSpawnAmmoShops : AwakeMonoBehaviour
 
     private void StartSpawnAmmoShops()
     {
-        _ammoShopsStruct = new AmmoShopsStruct[20];
-        for (int i = 0; i < _ammoShopsStruct.Length; i++)
+        _ammoShopsStructs = new AmmoShopsStruct[20];
+        for (int i = 0; i < _ammoShopsStructs.Length; i++)
         {
             int indexSpawn = Random.Range(0, _ammoShops.Length);
             GameObject newSpawn = Instantiate(_ammoShops[indexSpawn], transform.position, Quaternion.identity);
             newSpawn.transform.parent = transform;
-            _ammoShopsStruct[i].ammoShop = newSpawn.transform;
-            _ammoShopsStruct[i].ammoShopColl = newSpawn.GetComponent<BoxCollider>();
+            _ammoShopsStructs[i].ammoShop = newSpawn.transform;
+            _ammoShopsStructs[i].ammoShopColl = newSpawn.GetComponent<BoxCollider>();
 
             switch (indexSpawn)
             {
@@ -45,6 +43,6 @@ public class ListSpawnAmmoShops : AwakeMonoBehaviour
 
     private void AmmoShopsSpawnType(int i, AmmoType ammoType)
     {
-        _ammoShopsStruct[i].ammoShopType = ammoType;
+        _ammoShopsStructs[i].ammoShopType = ammoType;
     }
 }

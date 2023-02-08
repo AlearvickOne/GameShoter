@@ -4,18 +4,13 @@ using UnityEngine;
 /// <summary>
 /// Spawn loot as bullet magazines, after the death of the monster.
 /// </summary>
-public class MonsterDamagerAndShopSpawns : AwakeMonoBehaviour
+public class MonsterDamagerAndShopSpawns : StructsSave
 {
-    int MONSTER_ANIM_DEAD = Animator.StringToHash("MonsterDead");
+    private readonly int MONSTER_ANIM_DEAD = Animator.StringToHash("MonsterDead");
 
-    [Header("                             SCRIPTS")]
-    [Space(10)]
-    [SerializeField] private AmmoSpawnStart _ammoSpawnStart;
-    [SerializeField] private ListSpawnAmmoShops _listSpawnAmmoShops;
     [Header("                             PARAMETERS")]
     [Space(10)]
-    [SerializeField] protected internal float _monsterHp;
-    protected internal bool _monsterIsDead = false;
+    private int _nomberObject;
     [Header("                             OBJECTS")]
     [Space(10)]
     [SerializeField] private Animator _monsterAnimator;
@@ -27,13 +22,18 @@ public class MonsterDamagerAndShopSpawns : AwakeMonoBehaviour
 
     private void FindComponents()
     {
-        _ammoSpawnStart = GameObject.FindGameObjectWithTag("AmmoSpawns").GetComponent<AmmoSpawnStart>();
-        _listSpawnAmmoShops = GameObject.FindGameObjectWithTag("listSpawnAmmoShop").GetComponent<ListSpawnAmmoShops>();
+        for (int n = 0; n < _aiMonstersStructs.Length; n++)
+        {
+            if (_aiMonstersStructs[n].monsterObject == gameObject)
+            {
+                _nomberObject = n;
+            }
+        }
     }
 
     private void Update()
     {
-        AmmoAddingMonsterisDead();
+        MonsterIsDead();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,52 +43,57 @@ public class MonsterDamagerAndShopSpawns : AwakeMonoBehaviour
 
     private void MonsterDamageWeapons(Collider other)
     {
-        for (int i = 0; i < _ammoSpawnStart._weaponsAmmoStruct.Length; i++)
+
+        for (int i = 0; i < _weaponsAmmoStructs.Length; i++)
         {
-            if (other == _ammoSpawnStart._weaponsAmmoStruct[i].bulletColl && this._monsterIsDead == false)
+            if (other == _weaponsAmmoStructs[i].bulletColl && _aiMonstersStructs[_nomberObject].monsterIsDead == false)
             {
-                switch (_ammoSpawnStart._weaponsAmmoStruct[i].ammoType)
+                switch (_weaponsAmmoStructs[i].ammoType)
                 {
                     case AmmoType.ammoPistolet:
-                        _monsterHp -= Random.Range(5, 10);
-                        break;   
+                        _aiMonstersStructs[_nomberObject].monsterHP -= Random.Range(5, 10);
+                        break;
                     case AmmoType.ammoAutomat:
-                        _monsterHp -= Random.Range(10, 20);
-                        break;   
+                        _aiMonstersStructs[_nomberObject].monsterHP -= Random.Range(10, 20);
+                        break;
                     case AmmoType.ammoRacketnica:
-                        _monsterHp -= Random.Range(40, 50);
+                        _aiMonstersStructs[_nomberObject].monsterHP -= Random.Range(40, 50);
                         break;
                 }
             }
         }
     }
 
-    private void AmmoAddingMonsterisDead()
+    private void MonsterIsDead()
     {
-        if(this._monsterHp <= 0 && this._monsterIsDead == false)
+        if (_aiMonstersStructs[_nomberObject].monsterHP <= 0 && _aiMonstersStructs[_nomberObject].monsterIsDead == false)
         {
-            StartCoroutine(TimerAnimAndDeactive(3.2f));
-            for (int i = 0; i < _listSpawnAmmoShops._ammoShopsStruct.Length; i++)
-            {
-                if(_listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.gameObject.activeSelf == false)
-                {
-                    _listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.gameObject.SetActive(true);
-                    _listSpawnAmmoShops._ammoShopsStruct[i].ammoShop.position = this.transform.position;
-                    break;
-                }
-            }
-            this._monsterIsDead = true;
+            AmmoAdding();
         }
     }
 
+    private void AmmoAdding()
+    {
+        StartCoroutine(TimerAnimAndDeactive(3.2f));
+        for (int i = 0; i < _ammoShopsStructs.Length; i++)
+        {
+            if (_ammoShopsStructs[i].ammoShop.gameObject.activeSelf == false)
+            {
+                _ammoShopsStructs[i].ammoShop.gameObject.SetActive(true);
+                _ammoShopsStructs[i].ammoShop.position = this.transform.position;
+                break;
+            }
+        }
+        _aiMonstersStructs[_nomberObject].monsterIsDead = true;
+
+    }
     private IEnumerator TimerAnimAndDeactive(float second)
     {
-        if(_monsterAnimator != null)
+        if (_monsterAnimator != null)
         {
             _monsterAnimator.SetTrigger(MONSTER_ANIM_DEAD);
             yield return new WaitForSeconds(second);
             this.gameObject.SetActive(false);
-
         }
         else
         {

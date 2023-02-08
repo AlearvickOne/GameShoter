@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Creating bullets at the beginning of the game for their subsequent use.
 /// </summary>
-public class AmmoSpawnStart : AwakeMonoBehaviour
+public class AmmoSpawnStart : StructsSave
 {
     [Header("                             OBJECTS")]
     [Space(10)]
@@ -15,15 +15,13 @@ public class AmmoSpawnStart : AwakeMonoBehaviour
     [SerializeField] private int spawnAutomatAmmoQuantity;
     [SerializeField] private int spawnRacketnicaAmmoQuantity;
 
-    protected internal WeaponsAmmoStruct[] _weaponsAmmoStruct;
-
     private void Awake()
     {
         int ammoSum1 = spawnAutomatAmmoQuantity + spawnPistoletAmmoQuantity;
         int ammoSum2 = ammoSum1 + spawnRacketnicaAmmoQuantity;
-
         int allAmmoSpawn = ammoSum2;
-        _weaponsAmmoStruct = new WeaponsAmmoStruct[allAmmoSpawn];
+
+        _weaponsAmmoStructs = new WeaponsAmmoStruct[allAmmoSpawn];
         SpawnAmmo();
     }
 
@@ -52,15 +50,15 @@ public class AmmoSpawnStart : AwakeMonoBehaviour
 
     private void Spawn(int i, int indexWeapon, AmmoType ammoType)
     {
-        if (_weaponsAmmoStruct[i].isFull == false)
+        if (_weaponsAmmoStructs[i].isFull == false)
         {
             GameObject newSpawn = Instantiate(bullets[indexWeapon], ammoBandoliers[indexWeapon].position, Quaternion.identity);
             newSpawn.transform.parent = ammoBandoliers[indexWeapon];
-            _weaponsAmmoStruct[i].bullet = newSpawn.gameObject;
-            _weaponsAmmoStruct[i].bulletColl = newSpawn.GetComponent<BoxCollider>();
-            _weaponsAmmoStruct[i].ammoType = ammoType;
-            _weaponsAmmoStruct[i].bullet.SetActive(false);
-            _weaponsAmmoStruct[i].isFull = true;
+            _weaponsAmmoStructs[i].bullet = newSpawn.gameObject;
+            _weaponsAmmoStructs[i].bulletColl = newSpawn.GetComponent<BoxCollider>();
+            _weaponsAmmoStructs[i].ammoType = ammoType;
+            _weaponsAmmoStructs[i].bullet.SetActive(false);
+            _weaponsAmmoStructs[i].isFull = true;
         }
     }
 }

@@ -3,46 +3,53 @@ using UnityEngine;
 /// <summary>
 /// Controls the AI of most monsters.
 /// </summary>
-public class MonstersAiController : AwakeMonoBehaviour
+public class MonstersAiController : StructsSave
 {
     [Header("                             SCRIPTS")]
     [Space(10)]
     [SerializeField] private MonstersSpawn _mSpawn;
-    private PlayerCharacter _playerCharacter;
     [Header("                             OBJECTS")]
     [Space(10)]
     [SerializeField] private GameObject _player;
-
-    protected internal AiMonsters[] _aiMonsters;
     protected internal const float _startSpeed = 10;
 
     private void Start()
     {
-        FindGetComponents();
-        StartCoroutine(MonsterMoveToPointAndAttack(_aiMonsters));
+        StartCoroutine(MonsterMoveToPointAndAttack());
     }
 
-    private void FindGetComponents()
+    private void MonsterDeactiveFarAway(int i, float dist)
     {
-        _aiMonsters = _mSpawn._aiMonsters;
-        _playerCharacter = _player.GetComponent<PlayerCharacter>();
-    }
-
-    private IEnumerator MonsterMoveToPointAndAttack(AiMonsters[] aiMonsters)
-    {
-        while (true)
+        if (dist > 100 && _aiMonstersStructs[i].monsterObject.activeSelf == true && _aiMonstersStructs[i].monsterHP > 0)
         {
-            for (int i = 0; i < aiMonsters.Length; i++)
+
+            _aiMonstersStructs[i].monsterObject.SetActive(false);
+            Debug.LogWarning(_aiMonstersStructs[i].monsterObject.activeSelf);
+        }
+        if(dist < 100 && _aiMonstersStructs[i].monsterObject.activeSelf == false && _aiMonstersStructs[i].monsterHP > 0)
+        {
+           _aiMonstersStructs[i].monsterObject.SetActive(true);
+            Debug.LogWarning(_aiMonstersStructs[i].monsterObject.activeSelf);
+        }
+    }
+
+    private IEnumerator MonsterMoveToPointAndAttack()
+    {
+        while (_aiMonstersStructs != null)
+        { 
+            for (int i = 0; i < _aiMonstersStructs.Length; i++)
             {
-                float dist = Vector3.Distance(aiMonsters[i].monsterAgent.transform.position, _player.transform.position);
-                if (dist > 2 && aiMonsters[i].monsterAgent.gameObject.activeSelf != false)
+                float dist = Vector3.Distance(_aiMonstersStructs[i].monsterObject.transform.position, _player.transform.position);
+                MonsterDeactiveFarAway(i, dist);
+
+                if (dist > 2 && dist < 50 &&  _aiMonstersStructs[i].monsterObject.activeSelf != false)
                 {
-                    aiMonsters[i].monsterAgent.speed = _startSpeed;
-                    aiMonsters[i].monsterAgent.destination = _player.transform.position;
+                    _aiMonstersStructs[i].monsterAgent.speed = _startSpeed;
+                    _aiMonstersStructs[i].monsterAgent.destination = _player.transform.position;
                 }
-                else if (dist < 2 && aiMonsters[i].monsterAgent.gameObject.activeSelf != false)
+                else if (dist < 2 && _aiMonstersStructs[i].monsterObject.activeSelf != false)
                 {
-                    aiMonsters[i].monsterAgent.speed = 0;
+                    _aiMonstersStructs[i].monsterAgent.speed = 0;
                     float randDamage = Random.Range(1.0f, 5.0f);
                     SaveSceneParametersObjects._singleton._playerHealth -= randDamage;
                 }
