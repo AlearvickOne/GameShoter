@@ -20,6 +20,7 @@ public class MonstersSpawn : StructsSave
         if (_aiMonstersStructs != null)
         {
             SpawnMonsters();
+
         }
     }
 
@@ -38,9 +39,10 @@ public class MonstersSpawn : StructsSave
 
             _aiMonstersStructs[i].monsterAnimation = newMonsters.GetComponent<Animator>();
             _aiMonstersStructs[i].monsterAgent = newMonsters.GetComponent<NavMeshAgent>();
+            _aiMonstersStructs[i].monsterColl = newMonsters.GetComponent<BoxCollider>();
             _aiMonstersStructs[i].monsterObject = newMonsters;
             _aiMonstersStructs[i].monsterIsDead = false;
-
+            Debug.LogError(_aiMonstersStructs.Length);
             switch (randomMonsters)
             {
                 case 0:

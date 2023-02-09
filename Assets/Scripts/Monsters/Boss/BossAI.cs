@@ -15,10 +15,7 @@ public class BossAI : StructsSave
     [Header("                             OBJECTS")]
     [Space(10)]
     [SerializeField] protected internal Transform _player;
-    [SerializeField] private NavMeshAgent _bossAgent;
-    [SerializeField] private Animator _bossAnimator;
     [SerializeField] private Transform _targetScopePoint;
-    private Transform _bossTransform;
     [Header("                             PARAMETERS")]
     [Space(10)]
     [SerializeField] private float _bossSpeed;
@@ -29,70 +26,81 @@ public class BossAI : StructsSave
 
     private void Awake()
     {
-        FindComponents();
+        FindComponentsAddStructs();
     }
     private void Update()
     {
-        BossMoveToPlayer();
+        for (int i = 0; i < _aiBossStructs.Length; i++)
+        {
+            BossMoveToPlayer(i);
+        }
     }
 
-    private void FindComponents()
+    private void FindComponentsAddStructs()
     {
-        _bossTransform = _bossAgent.GetComponent<Transform>();
-        _bossHP = 10000;
-        _bossIsDead = false;
+        _aiBossStructs = new AiBoss[1];
+        for (int i = 0; i < _aiBossStructs.Length; i++)
+        {
+            _aiBossStructs[i].bossObject = gameObject;
+            _aiBossStructs[i].bossTransform = gameObject.transform;
+            _aiBossStructs[i].bossAgent = gameObject.GetComponent<NavMeshAgent>();
+            _aiBossStructs[i].bossAnimator = gameObject.GetComponent<Animator>();
+            _aiBossStructs[i].bossColl = gameObject.GetComponent<BoxCollider>();
+            _aiBossStructs[i].bossHP = 10000;
+            _aiBossStructs[i].bossIsDead = false;
+        }
     }
 
-    private void BossMoveToPlayer()
+    private void BossMoveToPlayer(int i)
     {
-        float dist = Vector3.Distance(_bossTransform.position, _player.position);
+        float dist = Vector3.Distance(_aiBossStructs[i].bossTransform.position, _player.position);
         float bossMinDist = 20;
         float bossMaxDist = 50;
-        _bossAgent.stoppingDistance = bossMinDist;
+        _aiBossStructs[i].bossAgent.stoppingDistance = bossMinDist;
 
-        if (dist <= bossMinDist && _bossIsDead == false)
+        if (dist <= bossMinDist && _aiBossStructs[i].bossIsDead == false)
         {
-            _bossTransform.LookAt(_player);
-            ActiveAnimations(BOSS_ANIM_IDLE, BOSS_ANIM_IDLE_ATTACK);
+            _aiBossStructs[i].bossTransform.LookAt(_player);
+            ActiveAnimations(i, BOSS_ANIM_IDLE, BOSS_ANIM_IDLE_ATTACK);
         }
-        else if (dist > bossMinDist && dist <= bossMaxDist && _bossIsDead == false)
+        else if (dist > bossMinDist && dist <= bossMaxDist && _aiBossStructs[i].bossIsDead == false)
         {
-            _bossAgent.speed = _bossSpeed;
-            _bossAgent.destination = _player.position;
-            _bossTransform.LookAt(_player);
-            ActiveAnimations(BOSS_ANIM_RUN, BOSS_ANIM_RUN_ATTACK);
+            _aiBossStructs[i].bossAgent.speed = _bossSpeed;
+            _aiBossStructs[i].bossAgent.destination = _player.position;
+            _aiBossStructs[i].bossTransform.LookAt(_player);
+            ActiveAnimations(i, BOSS_ANIM_RUN, BOSS_ANIM_RUN_ATTACK);
         }
-        else if (dist > bossMaxDist && _bossIsDead == false)
+        else if (dist > bossMaxDist && _aiBossStructs[i].bossIsDead == false)
         {
-            _bossAgent.speed = 0;
-            AnimationBossPlay(BOSS_ANIM_IDLE);
+            _aiBossStructs[i].bossAgent.speed = 0;
+            AnimationBossPlay(i, BOSS_ANIM_IDLE);
         }
     }
 
-    private void ActiveAnimations(int animNoBossAttack, int animBossAttack)
+    private void ActiveAnimations(int i, int animNoBossAttack, int animBossAttack)
     {
         switch (_bossSeePlayer)
         {
             case true:
                 Debug.Log("Boss see player");
-                BossAttack(animBossAttack);
+                BossAttack(i, animBossAttack);
                 break;
             case false:
                 Debug.Log("Boss is not see player");
-                AnimationBossPlay(animNoBossAttack);
+                AnimationBossPlay(i, animNoBossAttack);
                 break;
         }
     }
 
-    private void AnimationBossPlay(int nameAnim)
+    private void AnimationBossPlay(int i, int nameAnim)
     {
-        if (_bossAnimator != null)
+        if (_aiBossStructs[i].bossAnimator != null)
         {
-            _bossAnimator.SetTrigger(nameAnim);
+            _aiBossStructs[i].bossAnimator.SetTrigger(nameAnim);
         }
     }
-    private void BossAttack(int nameAnim)
+    private void BossAttack(int i, int nameAnim)
     {
-        AnimationBossPlay(nameAnim);
+        AnimationBossPlay(i, nameAnim);
     }
 }

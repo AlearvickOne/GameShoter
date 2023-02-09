@@ -3,7 +3,17 @@ guid: a19c32d61903ecb4dac80dd8da3c985f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kolba
+    second: {fileID: 2100000, guid: c6b0bf0b9e476664facd647e8e0cee36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kolbas
+    second: {fileID: 2100000, guid: c86d3d5b757188d44af9b42d6b043a79, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

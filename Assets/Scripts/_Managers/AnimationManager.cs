@@ -46,7 +46,7 @@ public class AnimationManager : StructsSave
 
     private void Update()
     {
-        PlayerAnimations(_pCharacter._playerIsMove);
+        PlayerAnimations(_playerIsMove);
 
         if (_aiMonstersStructs != null)
             MonstersAnimations(_aiMonstersStructs);
@@ -149,9 +149,9 @@ public class AnimationManager : StructsSave
             _playerAnimator.SetBool(animNameIdle, isActive);
         }
 
-        if (_pCharacter._playerIsMove == true)
+        if (_playerIsMove == true)
             _playerAnimator.SetBool(animNameRun, true);
-        else if (_pCharacter._playerIsMove == false)
+        else if (_playerIsMove == false)
             _playerAnimator.SetBool(animNameRun, false);
     }
 

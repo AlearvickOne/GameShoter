@@ -26,14 +26,17 @@ public class BossAttack : StructsSave
     {
         _timeRpm += Time.deltaTime;
 
-        TimeRpmAttack(0.3f, _bossRightWeapon, false);
-        TimeRpmAttack(0.6f, _bossLeftWeapon, true);
+        for (int k = 0; k < _aiBossStructs.Length; k++)
+        {
+        TimeRpmAttack(k,0.3f, _bossRightWeapon, false);
+        TimeRpmAttack(k,0.6f, _bossLeftWeapon, true);
+        }
 
     }
 
-    private void TimeRpmAttack(float maxTime, Transform weaponBossName, bool oneShot)
+    private void TimeRpmAttack(int k, float maxTime, Transform weaponBossName, bool oneShot)
     {
-        if (_timeRpm > maxTime && _oneShot == oneShot && _bossAI._bossSeePlayer == true && _bossIsDead == false)
+        if (_timeRpm > maxTime && _oneShot == oneShot && _bossAI._bossSeePlayer == true && _aiBossStructs[k].bossIsDead == false)
         {
             RayCastBossToPlayer(weaponBossName);
 

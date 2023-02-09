@@ -10,7 +10,6 @@ public class MonsterHpSliderPoint : StructsSave
     [Space(10)]
     [SerializeField] private Slider _hpSlider;
     [SerializeField] private GameObject _parentObj;
-    [SerializeField] private GameObject _bossObj;
     [Header("                             PARAMETERS")]
     private int _nomberObject;
 
@@ -39,25 +38,43 @@ public class MonsterHpSliderPoint : StructsSave
 
     private void MonsterHpSliderValue()
     {
-        if(_parentObj == _bossObj)
+        for (int i = 0; i < _aiBossStructs.Length; i++)
         {
-            _hpSlider.value = _bossHP;
+            if(_parentObj == _aiBossStructs[i].bossObject)
+            {
+                _hpSlider.value = _aiBossStructs[i].bossHP;
+            }
         }
-        else if(this.gameObject != _bossObj)
+
+
+        for (int i = 0; i < _aiMonstersStructs.Length; i++)
         {
-            _hpSlider.value = _aiMonstersStructs[_nomberObject].monsterHP;
+            if (_parentObj == _aiMonstersStructs[_nomberObject].monsterObject)
+            {
+                _hpSlider.value = _aiMonstersStructs[_nomberObject].monsterHP;
+            }
         }
+
     }
 
     private void MonsterHpSliderMaxValue()
     {
-        if (_parentObj == _bossObj)
+        for (int i = 0; i < _aiBossStructs.Length; i++)
         {
-            _hpSlider.maxValue = _bossHP;
+            if (_parentObj == _aiBossStructs[i].bossObject)
+            {
+                _hpSlider.maxValue = _aiBossStructs[i].bossHP;
+            }
         }
-        else if (this.gameObject != _bossObj)
+
+        for (int i = 0; i < _aiMonstersStructs.Length; i++)
         {
-            _hpSlider.maxValue = _aiMonstersStructs[_nomberObject].monsterHP;
+            if (_parentObj == _aiMonstersStructs[_nomberObject].monsterObject)
+            {
+                _hpSlider.maxValue = _aiMonstersStructs[_nomberObject].monsterHP;
+            }
         }
+
+       
     }
 }

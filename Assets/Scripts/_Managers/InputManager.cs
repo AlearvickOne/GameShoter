@@ -4,7 +4,7 @@ using UnityEngine;
 /// A script for assigning control to a character and everything related to it.
 /// </summary>
 
-public class InputManager : AwakeMonoBehaviour
+public class InputManager : StructsSave
 {
     [Header("                             SCRIPTS")]
     [Space(10)]
@@ -19,11 +19,11 @@ public class InputManager : AwakeMonoBehaviour
         if (Input.GetMouseButton(1))
         {
             _pCharacter.MoveRaycast();
-            _pCharacter._playerIsMove = true;
+            _playerIsMove = true;
         }
         else if (_pCharacter._playerAgent.remainingDistance <= _pCharacter._playerAgent.stoppingDistance)
         {
-            _pCharacter._playerIsMove = false;
+            _playerIsMove = false;
         }
     }
 }
