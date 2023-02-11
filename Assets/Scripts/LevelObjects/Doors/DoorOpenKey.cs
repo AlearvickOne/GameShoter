@@ -8,9 +8,9 @@ public class DoorOpenKey : MonoBehaviour
     private int ANIM_DOOR_OPEN = Animator.StringToHash("DoorOpen");
     private int ANIM_DOOR_CLOSE = Animator.StringToHash("DoorClose");
 
-    private BoxCollider _player;
-    private Animator _doorAnim;
-    private bool _doorKey = false;
+    [SerializeField] private BoxCollider _player;
+    [SerializeField] private Animator _doorAnim;
+    [SerializeField] private bool _doorKey = false;
 
     private void OnTriggerEnter(Collider other)
     {
