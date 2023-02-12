@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Structs\Structs.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\SaveGame\SaveSceneParametersObjects.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\KomplexLightAcive.cs" />
     <Compile Include="Assets\Scripts\Monsters\MonsterHpCameraLookAt.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\_AwakeMonoBehaviour\AwakeMonoBehaviour.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\_Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\Menu\Menu.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Scripts\_Camera\CameraInPlayer.cs" />
     <Compile Include="Assets\Scripts\_Managers\AnimationManager.cs" />
@@ -116,7 +118,9 @@
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponSelectionInActivate.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponsActiveInPlayerWhenClickKeyButton.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\MousePositionInActKey.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\KeyboardList.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoSpawnStart.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />

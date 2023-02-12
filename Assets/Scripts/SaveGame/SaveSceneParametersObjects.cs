@@ -19,7 +19,6 @@ public class SaveSceneParametersObjects : AwakeMonoBehaviour
         }
         else if (_singleton != this)
         {
-            Debug.LogError("Add ");
             Destroy(this.gameObject);
         }
     }
