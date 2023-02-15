@@ -24,12 +24,10 @@ public class MonstersAiController : StructsSave
         {
 
             _aiMonstersStructs[i].monsterObject.SetActive(false);
-            Debug.LogWarning(_aiMonstersStructs[i].monsterObject.activeSelf);
         }
         if(dist < 100 && _aiMonstersStructs[i].monsterObject.activeSelf == false && _aiMonstersStructs[i].monsterHP > 0)
         {
            _aiMonstersStructs[i].monsterObject.SetActive(true);
-            Debug.LogWarning(_aiMonstersStructs[i].monsterObject.activeSelf);
         }
     }
 

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +7,7 @@ public class KeyboardList : AwakeMonoBehaviour
     #region [SINGLETON ACTIVE]
     public static KeyboardList _singleton;
 
-    void SingletonActive()
+    private void SingletonActive()
     {
         _singleton = this;
 
@@ -25,19 +23,19 @@ public class KeyboardList : AwakeMonoBehaviour
 
 
 
-    [SerializeField] protected internal KeyCode _actLamp;
+    [SerializeField] protected internal static KeyCode _actLamp;
 
-    [SerializeField] protected internal KeyCode _actWpnOne;
-    [SerializeField] protected internal KeyCode _actWpnTwo;
-    [SerializeField] protected internal KeyCode _actWpnThree;
+    [SerializeField] protected internal static KeyCode _actWpnOne;
+    [SerializeField] protected internal static KeyCode _actWpnTwo;
+    [SerializeField] protected internal static KeyCode _actWpnThree;
 
-    [SerializeField] protected internal KeyCode _actBint;
-    [SerializeField] protected internal KeyCode _actAnalgesic;
-    [SerializeField] protected internal KeyCode _actMedicament;
+    [SerializeField] protected internal static KeyCode _actBint;
+    [SerializeField] protected internal static KeyCode _actAnalgesic;
+    [SerializeField] protected internal static KeyCode _actMedkit;
 
-    [SerializeField] protected internal KeyCode _keyActivity;
+    [SerializeField] protected internal static KeyCode _keyActivity;
 
-    [Header("SpritesKeyToUI")]
+    [Header("UISpritesKeyToOptionMenu")]
     [SerializeField] private Image _keyActLampSpriteUI;
     [SerializeField] private Image _keyActWpnOneSpriteUI;
     [SerializeField] private Image _keyActWpnTwoSpriteUI;
@@ -45,12 +43,13 @@ public class KeyboardList : AwakeMonoBehaviour
     [SerializeField] private Image _keyActBintSpriteUI;
     [SerializeField] private Image _keyActAnalgesicSpriteUI;
     [SerializeField] private Image _keyActMedicamentSpriteUI;
-    [SerializeField] private Image _keyActivitySpriteUI;
+    [SerializeField] protected internal Image _keyActivatedSpriteUI;
+
 
     [Header("KeyButtonsListArray")]
     [SerializeField] private List<SpriteRenderer> _keyButtonsSpriteList = new List<SpriteRenderer>();
 
-    void Start()
+    private void Start()
     {
         SingletonActive();
         SpritesKeyButtonsToListArray();
@@ -58,17 +57,21 @@ public class KeyboardList : AwakeMonoBehaviour
 
     private void Update()
     {
-        SpritesKeyButtons(_actLamp, _keyActLampSpriteUI);
-        SpritesKeyButtons(_actWpnOne, _keyActWpnOneSpriteUI);
-        SpritesKeyButtons(_actWpnTwo, _keyActWpnTwoSpriteUI);
-        SpritesKeyButtons(_actWpnThree, _keyActWpnTreeSpriteUI);
-        SpritesKeyButtons(_actBint, _keyActBintSpriteUI);
-        SpritesKeyButtons(_actAnalgesic, _keyActAnalgesicSpriteUI);
-        SpritesKeyButtons(_actMedicament, _keyActMedicamentSpriteUI);
-        SpritesKeyButtons(_keyActivity, _keyActivitySpriteUI);
+        if (_keyActLampSpriteUI != null)
+        {
+            SpritesKeyButtons(_actLamp, _keyActLampSpriteUI);
+            SpritesKeyButtons(_actWpnOne, _keyActWpnOneSpriteUI);
+            SpritesKeyButtons(_actWpnTwo, _keyActWpnTwoSpriteUI);
+            SpritesKeyButtons(_actWpnThree, _keyActWpnTreeSpriteUI);
+            SpritesKeyButtons(_actBint, _keyActBintSpriteUI);
+            SpritesKeyButtons(_actAnalgesic, _keyActAnalgesicSpriteUI);
+            SpritesKeyButtons(_actMedkit, _keyActMedicamentSpriteUI);
+
+        }
+        SpritesKeyButtons(_keyActivity, _keyActivatedSpriteUI);
     }
 
-    void SpritesKeyButtonsToListArray()
+    private void SpritesKeyButtonsToListArray()
     {
         foreach (Transform key in transform.GetComponentInChildren<Transform>())
         {
@@ -76,7 +79,7 @@ public class KeyboardList : AwakeMonoBehaviour
         }
     }
 
-    void SpritesKeyButtons(KeyCode keyName, Image keyButtonUI)
+    private void SpritesKeyButtons(KeyCode keyName, Image keyButtonUI)
     {
         for (int i = 0; i < _keyButtonsSpriteList.Count; i++)
         {

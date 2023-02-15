@@ -7,7 +7,7 @@ public class Weapons : WeaponCharacters
     private void OnEnable()
     {
         _ammoForwardToPoint._ammoType = _ammoType;
-        _weaponSounds = GetComponent<AudioSource>();
+        _weaponSounds = AudioAllSettings._weaponsAudio;
     }
 
     private void Update()

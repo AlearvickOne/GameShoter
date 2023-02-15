@@ -29,6 +29,7 @@ public class BossSpawnAmmo : StructsSave
             _ammoBossStructs[i].bulletBoss = newSpawn.transform;
             _ammoBossStructs[i].bulletBossRigidbody = newSpawn.GetComponent<Rigidbody>();
             _ammoBossStructs[i].bulletBossCollider = newSpawn.GetComponent<BoxCollider>();
+            newSpawn.SetActive(false);
         }
     }
 }

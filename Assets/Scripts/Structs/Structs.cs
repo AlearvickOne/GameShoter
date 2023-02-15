@@ -56,3 +56,12 @@ public struct AmmoBossStruct
     public BoxCollider bulletBossCollider;
 }
 
+
+public enum MedicamentsType { bint, analgesic, medkit}
+
+public struct MedicamentStruct
+{
+    public MedicamentsType medType;
+    public GameObject medGo;
+    public float plusHpQuantity;
+}

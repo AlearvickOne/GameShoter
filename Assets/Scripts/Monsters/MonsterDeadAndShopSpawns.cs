@@ -41,6 +41,7 @@ public class MonsterDeadAndShopSpawns : StructsSave
     {
         while (_aiMonstersStructs[_nomberObject].monsterHP <= 0)
         {
+            MedicamentsAdding();
             AmmoAdding();
             return;
         }
@@ -59,8 +60,23 @@ public class MonsterDeadAndShopSpawns : StructsSave
             }
         }
         _aiMonstersStructs[_nomberObject].monsterIsDead = true;
-
     }
+
+    private void MedicamentsAdding()
+    {
+        for (int i = 0; i < _medicamentStructs.Length; i++)
+        {
+            int random = Random.Range(0, 51);
+            Debug.Log(random);
+            if(_medicamentStructs[i].medGo.activeSelf == false && random == 50)
+            {
+                _medicamentStructs[i].medGo.SetActive(true);
+                _medicamentStructs[i].medGo.transform.position = this.transform.position;
+                break;
+            }
+        }
+    }
+
     private IEnumerator TimerAnimAndDeactive(float second)
     {
         if (_monsterAnimator != null)

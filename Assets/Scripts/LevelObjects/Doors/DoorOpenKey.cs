@@ -22,9 +22,9 @@ public class DoorOpenKey : MonoBehaviour
         DoorOpenOrClose(other, ANIM_DOOR_CLOSE);
     }
 
-    void DoorOpenOrClose(Collider other, int AnimName)
+    private void DoorOpenOrClose(Collider other, int AnimName)
     {
-        if(other == _player && _doorKey == true)
+        if (other == _player && _doorKey == true)
         {
             _doorAnim.SetTrigger(AnimName);
         }

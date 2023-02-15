@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoForwardToPoint.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\MedKit\SpawnMedicamentsToStart.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoSelectionIsGround.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Structs\Structs.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Scripts\__NewScripts\Menu\Menu.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Scripts\_Camera\CameraInPlayer.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsCharacters.cs" />
     <Compile Include="Assets\Scripts\_Managers\AnimationManager.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
@@ -118,7 +120,7 @@
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponSelectionInActivate.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponsActiveInPlayerWhenClickKeyButton.cs" />
-    <Compile Include="Assets\Scripts\__NewScripts\MousePositionInActKey.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\Menu\MousePositionInActKey.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\KeyboardList.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoSpawnStart.cs" />
@@ -129,6 +131,8 @@
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\_Managers\InputManager.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\AudioAllSettings.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsActInUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro.cginc" />

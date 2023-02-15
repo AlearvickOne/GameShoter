@@ -2,25 +2,50 @@ using UnityEngine;
 
 public class KomplexLightAcive : MonoBehaviour
 {
-    [SerializeField] BoxCollider _playerColl;
-    [SerializeField] GameObject _allLightKomplex;
-    [SerializeField] bool _transformatorIsActive;
+    [SerializeField] private BoxCollider _playerColl;
+    [SerializeField] private GameObject _allLightKomplex;
+    [SerializeField] private bool _transformatorIsActive = false;
 
     private void Start()
     {
-        ActiveLightKomplex(false, false);
+        ActiveLightKomplex(false);
+    }
+
+    private void ActiveButtonVisibleToUi(Collider other, bool isActive)
+    {
+        if (other == _playerColl && _transformatorIsActive == false)
+            KeyboardList._singleton._keyActivatedSpriteUI.gameObject.SetActive(isActive);
+        if (other == _playerColl && _transformatorIsActive == true)
+            KeyboardList._singleton._keyActivatedSpriteUI.gameObject.SetActive(false);
+    }
+
+    private void ActiveLightKomplex(bool setActivaterd)
+    {
+        if (_transformatorIsActive == false)
+        {
+            _allLightKomplex.SetActive(setActivaterd);
+
+        }
+        if (_allLightKomplex.activeSelf == true)
+        {
+            _transformatorIsActive = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.LogError(other);
-        if (Input.GetKey(KeyboardList._singleton._keyActivity) && other == _playerColl)
-            ActiveLightKomplex(false, true);
+        ActiveButtonVisibleToUi(other, true);
+
+        if (Input.GetKey(KeyboardList._keyActivity) && other == _playerColl)
+        {
+            ActiveLightKomplex(true);
+        }
     }
 
-    void ActiveLightKomplex(bool isActive, bool setActivaterd)
+    private void OnTriggerExit(Collider other)
     {
-        if (_transformatorIsActive == isActive)
-            _allLightKomplex.SetActive(setActivaterd);
+        ActiveButtonVisibleToUi(other, false);
     }
+
+
 }

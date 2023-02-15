@@ -7,7 +7,6 @@ public class AnimationManager : StructsSave
     [Header("                             SCRIPTS")]
     [Space(10)]
     [SerializeField] private MonstersSpawn _mSpawns;
-    private PlayerCharacter _pCharacter;
 
     [Header("                         PLAYER ANIMATIONS")]
     [Space(10)]
@@ -33,16 +32,6 @@ public class AnimationManager : StructsSave
     private int WEAPON_PISTOLET_ANIM_RUN = Animator.StringToHash("PistoletRun");
     private int WEAPON_AUTOMAT_ANIM_RUN = Animator.StringToHash("AutomatRun");
     private int WEAPON_RACKETNICA_ANIM_RUN = Animator.StringToHash("RacketnicaRun");
-
-    private void Start()
-    {
-        FindGetComponents();
-    }
-
-    private void FindGetComponents()
-    {
-        _pCharacter = _playerAnimator.GetComponent<PlayerCharacter>();
-    }
 
     private void Update()
     {
@@ -124,10 +113,10 @@ public class AnimationManager : StructsSave
             {
                 case 0:
                     ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_IDLE, default, false);
-                    continue;
+                   break;
                 case 1:
                     ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_IDLE, default, false);
-                    continue;
+                    break;
                 case 2:
                     ActiveWeaponAnim(i, WEAPON_RACKETNICA_ANIM_IDLE, default, false);
                     break;

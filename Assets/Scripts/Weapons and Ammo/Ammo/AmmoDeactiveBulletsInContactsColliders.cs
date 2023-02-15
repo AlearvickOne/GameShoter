@@ -27,7 +27,7 @@ class AmmoDeactiveBulletsInContactsColliders : AwakeMonoBehaviour
     {
         yield return _waitForSeconds = new WaitForSeconds(0.1f);
         this._partBoom.Stop();
-        this._audioSource.PlayOneShot(_audioClipBoom);
+        AudioAllSettings._weaponsAudio.PlayOneShot(_audioClipBoom);
         this.transform.position = Vector3.zero;
         yield return _waitForSeconds = new WaitForSeconds(6f);
         this.gameObject.SetActive(false);

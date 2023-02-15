@@ -42,9 +42,9 @@ public class WeaponsActiveInPlayerWhenClickKeyButton : AwakeMonoBehaviour
         int wpnAutomat = 1;
         int wpnRacketnica = 2;
 
-        ParametersActivate(KeyboardList._singleton._actWpnOne, SaveSceneParametersObjects._singleton._wpnPistoletIsSelected, wpnPistolet);
-        ParametersActivate(KeyboardList._singleton._actWpnTwo, SaveSceneParametersObjects._singleton._wpnAutomatIsSelected, wpnAutomat);
-        ParametersActivate(KeyboardList._singleton._actWpnThree, SaveSceneParametersObjects._singleton._wpnRacketnicaIsSelected, wpnRacketnica);
+        ParametersActivate(KeyboardList._actWpnOne, SaveSceneParametersObjects._singleton._wpnPistoletIsSelected, wpnPistolet);
+        ParametersActivate(KeyboardList._actWpnTwo, SaveSceneParametersObjects._singleton._wpnAutomatIsSelected, wpnAutomat);
+        ParametersActivate(KeyboardList._actWpnThree, SaveSceneParametersObjects._singleton._wpnRacketnicaIsSelected, wpnRacketnica);
 
         AmmoTextToGUI();
     }

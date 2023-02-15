@@ -21,6 +21,7 @@ public class PlayerCharacter : AwakeMonoBehaviour
     private void Update()
     {
         PlayeHpInSliderHp();
+        PlayerHeathCheck();
     }
 
     private void FindGetComponents()
@@ -43,5 +44,16 @@ public class PlayerCharacter : AwakeMonoBehaviour
     private void PlayeHpInSliderHp()
     {
         _playerHpSliderGUI.value = SaveSceneParametersObjects._singleton._playerHealth;
+    }
+
+    private void PlayerHeathCheck()
+    {
+        if (SaveSceneParametersObjects._singleton._playerHealth < 0)
+            SaveSceneParametersObjects._singleton._playerHealth = 0;
+        else if(SaveSceneParametersObjects._singleton._playerHealth > _playerHpSliderGUI.maxValue)
+        {
+            SaveSceneParametersObjects._singleton._playerHealth = _playerHpSliderGUI.maxValue;
+            _playerHpSliderGUI.value = _playerHpSliderGUI.maxValue;
+        }
     }
 }

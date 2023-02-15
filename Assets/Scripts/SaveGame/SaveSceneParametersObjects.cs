@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveSceneParametersObjects : AwakeMonoBehaviour
@@ -61,7 +59,7 @@ public class SaveSceneParametersObjects : AwakeMonoBehaviour
 
     void LoadParameters()
     {
-        Debug.Log("Load");      
+        Debug.Log("Load");
         // Player.
         _playerHealth = PlayerPrefs.GetFloat("PlayerHp");
         // Weapons is Selected?
@@ -70,7 +68,7 @@ public class SaveSceneParametersObjects : AwakeMonoBehaviour
         _wpnRacketnicaIsSelected = PlayerPrefs.GetInt("wpnRacketnicaAct") == 1 ? true : false;
         // Ammo Shop Quantity.
         _pistoletAmmoQuantity = PlayerPrefs.GetInt("wpnPistoletAmmo");
-        _automatAmmoQuantity =  PlayerPrefs.GetInt("wpnAutomatAmmo");
+        _automatAmmoQuantity = PlayerPrefs.GetInt("wpnAutomatAmmo");
         _racketnicaAmmoQuantity = PlayerPrefs.GetInt("wpnRacketnica");
     }
 
