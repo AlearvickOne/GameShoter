@@ -7,6 +7,9 @@ public class Menu : MonoBehaviour
     [Header("MainMenu")]
     [SerializeField] private GameObject _mainMenu;
 
+    [SerializeField] private GameObject _sceneMainMenu;
+    [SerializeField] private GameObject _sceneLevelTwo;
+
     [Header("OptionMenu")]
     [SerializeField] private GameObject _optionsMenuActive;
     [SerializeField] private GameObject _keyboardMenuOptions;
@@ -32,6 +35,9 @@ public class Menu : MonoBehaviour
     public void NewGameLoadScene()
     {
         SceneManager.LoadScene(1);
+
+        //_sceneMainMenu.SetActive(false);
+        //_sceneLevelTwo.SetActive(true);
     }
 
     public void ButtonOpenMainMenu()

@@ -30,13 +30,13 @@ public class MedicamentsCharacters : StructsSave
             switch (_medicamentStructs[_medIndex].medType)
             {
                 case MedicamentsType.bint:
-                    MedicamentsActInUI._quantityBints += 1;
+                    SaveParametersObjects._singleton._quantityBints += 1;
                     break;
                 case MedicamentsType.analgesic:
-                    MedicamentsActInUI._quantityAnalgesic += 1;
+                    SaveParametersObjects._singleton._quantityAnalgesic += 1;
                     break;
                 case MedicamentsType.medkit:
-                    MedicamentsActInUI._quantityMedKit += 1;
+                    SaveParametersObjects._singleton._quantityMedKit += 1;
                     break;
             }
 

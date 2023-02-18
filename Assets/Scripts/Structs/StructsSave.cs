@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StructsSave : AwakeMonoBehaviour
 {
-    protected internal static AiMonsters[] _aiMonstersStructs;
+   [SerializeField] protected internal static AiMonsters[] _aiMonstersStructs;
     protected internal static AiBoss[] _aiBossStructs;
     protected internal static WeaponsAmmoStruct[] _weaponsAmmoStructs;
     protected internal static AmmoShopsStruct[] _ammoShopsStructs;
@@ -13,4 +13,6 @@ public class StructsSave : AwakeMonoBehaviour
 
     // No Struct.
     protected internal static bool _playerIsMove;
+
+
 }

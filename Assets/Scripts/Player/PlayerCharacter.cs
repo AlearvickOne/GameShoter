@@ -43,16 +43,16 @@ public class PlayerCharacter : AwakeMonoBehaviour
 
     private void PlayeHpInSliderHp()
     {
-        _playerHpSliderGUI.value = SaveSceneParametersObjects._singleton._playerHealth;
+        _playerHpSliderGUI.value = SaveParametersObjects._singleton._playerHealth;
     }
 
     private void PlayerHeathCheck()
     {
-        if (SaveSceneParametersObjects._singleton._playerHealth < 0)
-            SaveSceneParametersObjects._singleton._playerHealth = 0;
-        else if(SaveSceneParametersObjects._singleton._playerHealth > _playerHpSliderGUI.maxValue)
+        if (SaveParametersObjects._singleton._playerHealth < 0)
+            SaveParametersObjects._singleton._playerHealth = 0;
+        else if(SaveParametersObjects._singleton._playerHealth > _playerHpSliderGUI.maxValue)
         {
-            SaveSceneParametersObjects._singleton._playerHealth = _playerHpSliderGUI.maxValue;
+            SaveParametersObjects._singleton._playerHealth = _playerHpSliderGUI.maxValue;
             _playerHpSliderGUI.value = _playerHpSliderGUI.maxValue;
         }
     }

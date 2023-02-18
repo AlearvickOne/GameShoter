@@ -37,16 +37,16 @@ public class WeaponSelectionInActivate : AwakeMonoBehaviour
                 switch (i)
                 {
                     case 0:
-                        SaveSceneParametersObjects._singleton._wpnPistoletIsSelected = true;
-                        SaveSceneParametersObjects._singleton._pistoletAmmoQuantity += 50;
+                        SaveParametersObjects._singleton._wpnPistoletIsSelected = true;
+                        SaveParametersObjects._singleton._pistoletAmmoQuantity += 50;
                         break;
                     case 1:
-                        SaveSceneParametersObjects._singleton._wpnAutomatIsSelected = true;
-                        SaveSceneParametersObjects._singleton._automatAmmoQuantity += 50;
+                        SaveParametersObjects._singleton._wpnAutomatIsSelected = true;
+                        SaveParametersObjects._singleton._automatAmmoQuantity += 50;
                         break;
                     case 2:
-                        SaveSceneParametersObjects._singleton._wpnRacketnicaIsSelected = true;
-                        SaveSceneParametersObjects._singleton._racketnicaAmmoQuantity += 50;
+                        SaveParametersObjects._singleton._wpnRacketnicaIsSelected = true;
+                        SaveParametersObjects._singleton._racketnicaAmmoQuantity += 50;
                         break;
                 }
                 Destroy(_weaponsLevelColliders[i].gameObject);

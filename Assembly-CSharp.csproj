@@ -56,14 +56,13 @@
     <Analyzer Include="B:\VisualStudio\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\Scripts\GameGarbageCollector.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\_Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Scripts\Monsters\MonstersSpawn.cs" />
     <Compile Include="Assets\Scripts\Monsters\Boss\BossSpawnAmmo.cs" />
     <Compile Include="Assets\Scripts\Structs\StructsSave.cs" />
+    <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsActInUI.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoDeactiveBulletsInContactsColliders.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoSpawnShopsStartGame.cs" />
     <Compile Include="Assets\Scripts\Monsters\Boss\BossBulletDamageToPlayer.cs" />
@@ -78,7 +77,6 @@
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Structs\Structs.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\Scripts\SaveGame\SaveSceneParametersObjects.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\KomplexLightAcive.cs" />
     <Compile Include="Assets\Scripts\Monsters\MonsterHpCameraLookAt.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
@@ -91,6 +89,7 @@
     <Compile Include="Assets\Scripts\Monsters\MonstersAiController.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\GUI\GUISlotWeaponActivated.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInventoryObjectsActive.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
@@ -101,10 +100,11 @@
     <Compile Include="Assets\Scripts\Monsters\MonsterHpSliderPoint.cs" />
     <Compile Include="Assets\Scripts\Monsters\Boss\TargetScopeTrigger.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-    <Compile Include="Assets\_Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\Scripts\LevelObjects\Doors\KeyAddToPlayer.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\Menu\Menu.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\Scripts\SaveGame\SaveParametersObjects.cs" />
     <Compile Include="Assets\Scripts\_Camera\CameraInPlayer.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsCharacters.cs" />
     <Compile Include="Assets\Scripts\_Managers\AnimationManager.cs" />
@@ -118,13 +118,15 @@
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponSelectionInActivate.cs" />
-    <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponsActiveInPlayerWhenClickKeyButton.cs" />
+    <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\Menu\MousePositionInActKey.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\KeyboardList.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Ammo\AmmoSpawnStart.cs" />
+    <Compile Include="Assets\Scripts\LevelObjects\Doors\Inventory\InventoryObjectsAdd.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+    <Compile Include="Assets\Scripts\Monsters\AssigmentVector3AndQuarterions.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -132,40 +134,34 @@
     <Compile Include="Assets\Scripts\_Managers\InputManager.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\AudioAllSettings.cs" />
-    <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsActInUI.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerGazDamage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\_Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\_Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\_TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\_TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\_Photon\PhotonLibs\WebSocket\websocket-sharp.dll" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.XML" />
+    <None Include="Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.XML" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\_TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\_Photon\PhotonLibs\changes-library.txt" />
     <None Include="Assets\_TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\_Photon\PhotonUnityNetworking\readme.txt" />
-    <None Include="Assets\_Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll" />
-    <None Include="Assets\_Photon\PhotonLibs\Photon3Unity3D.dll" />
     <None Include="Assets\_TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\_Photon\PhotonLibs\Metro\Photon3Unity3D.dll" />
+    <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.dll" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\_Photon\PhotonLibs\Photon3Unity3D.xml" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\_TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\_Photon\PhotonUnityNetworking\link.xml" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\_TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\_TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
@@ -413,12 +409,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>B:\UnityEngine\2021.3.7f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\_Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\_Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -801,6 +791,9 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>B:\UnityEngine\2021.3.7f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -812,45 +805,6 @@
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -864,11 +818,26 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.State.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
@@ -876,14 +845,26 @@
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Polybrush.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Polybrush.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
@@ -894,8 +875,17 @@
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.EditorCoroutines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TerrainTools">
       <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
@@ -932,45 +922,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PhotonChat.csproj">
-      <Project>{743467AC-280F-4B2F-7CAC-D6B652B19670}</Project>
-      <Name>PhotonChat</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{97A09986-62E0-6CE9-1686-F1CBB997938C}</Project>
-      <Name>PhotonUnityNetworking.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{0866F70F-5A05-9E00-CBA5-C9A5F0E54A47}</Project>
-      <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{3AF8122E-AE27-A7E5-42A6-FFA15F5DFACD}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{E75F6880-5CB2-BE68-BE25-5A9AF6DA08D2}</Project>
-      <Name>PhotonUnityNetworking</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{94B52C70-7B17-3E59-56AF-1F6024F8CAA8}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{BB77E6E4-9F6E-5563-8ADE-94FEF3CAB9D5}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{FA91E138-B6AD-BA44-11CA-BFCBD3C32313}</Project>
-      <Name>PhotonRealtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{5795B410-955E-5E40-68B7-6EA93FFFF06F}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{820F2C4B-34EC-CB72-98CF-A22B9AB9260A}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{F7660353-CDAF-97A5-A174-D5D536C5531D}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

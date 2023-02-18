@@ -49,7 +49,7 @@ public class MonstersAiController : StructsSave
                 {
                     _aiMonstersStructs[i].monsterAgent.speed = 0;
                     float randDamage = Random.Range(1.0f, 5.0f);
-                    SaveSceneParametersObjects._singleton._playerHealth -= randDamage;
+                    SaveParametersObjects._singleton._playerHealth -= randDamage;
                 }
             }
             yield return null;

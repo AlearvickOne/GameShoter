@@ -37,6 +37,7 @@ public class MonstersSpawn : StructsSave
 
             GameObject newMonsters = Instantiate(_monsters[randomMonsters], spawnRandomTransform, Quaternion.identity);
 
+            _aiMonstersStructs[i].monsterTransform = newMonsters.transform;
             _aiMonstersStructs[i].monsterAnimation = newMonsters.GetComponent<Animator>();
             _aiMonstersStructs[i].monsterAgent = newMonsters.GetComponent<NavMeshAgent>();
             _aiMonstersStructs[i].monsterColl = newMonsters.GetComponent<BoxCollider>();

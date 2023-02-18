@@ -56,7 +56,7 @@ public class AnimationManager : StructsSave
                 break;
         }
 
-        if (SaveSceneParametersObjects._singleton._playerHealth <= 0)
+        if (SaveParametersObjects._singleton._playerHealth <= 0)
             _playerAnimator.SetTrigger(PLAYER_ANIM_DEAD);
     }
     #endregion

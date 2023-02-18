@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BulletColliderDamageMonsters : StructsSave
@@ -64,8 +65,8 @@ public class BulletColliderDamageMonsters : StructsSave
 
     void AoeColliderDerectionDamageMonster()
     {
-        Collider[] collSphereAoe = Physics.OverlapSphere(_bullet.position, 10, layer, QueryTriggerInteraction.Collide);
-
+        Collider[] collSphereAoe = Physics.OverlapSphere(_bullet.position, 15, layer, QueryTriggerInteraction.Collide);
+  
         for (int i = 0; i < _aiMonstersStructs.Length; i++)
         {
             for (int n = 0; n < collSphereAoe.Length; n++)
@@ -85,8 +86,13 @@ public class BulletColliderDamageMonsters : StructsSave
                 {
                     _aiBossStructs[i].bossHP -= Random.Range(50, 80);
                 }
+                    Debug.Log(collSphereAoe[n].gameObject);
+
+                
             }
         }
+        ArrayUtility.Clear(ref collSphereAoe);
+        Debug.Log(collSphereAoe);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,9 +101,9 @@ public class BulletColliderDamageMonsters : StructsSave
 
         if(_ammoType == AmmoType.ammoRacketnica)
         {
+            Debug.Log(_ammoType);
             AoeColliderDerectionDamageMonster();
         }
     }
-
 
 }

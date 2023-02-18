@@ -1,10 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum MonsterType { greenMonster, bigGreenMonster }
+
 public struct AiMonsters
 {
     public MonsterType monsterType;
+    public Transform monsterTransform;
+    public Vector3 monsterVectorFull;
     public GameObject monsterObject;
     public NavMeshAgent monsterAgent;
     public Animator monsterAnimation;
@@ -17,6 +21,7 @@ public struct AiBoss
 {
     public GameObject bossObject;
     public Transform bossTransform;
+    public float[] bossVectors;
     public NavMeshAgent bossAgent;
     public Animator bossAnimator;
     public BoxCollider bossColl;
