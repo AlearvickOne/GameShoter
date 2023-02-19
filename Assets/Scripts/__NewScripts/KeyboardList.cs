@@ -21,8 +21,6 @@ public class KeyboardList : AwakeMonoBehaviour
     }
     #endregion
 
-
-
     [SerializeField] protected internal static KeyCode _actLamp;
 
     [SerializeField] protected internal static KeyCode _actWpnOne;
@@ -51,8 +49,24 @@ public class KeyboardList : AwakeMonoBehaviour
 
     private void Start()
     {
+        StartKeyBoardParameters();
         SingletonActive();
         SpritesKeyButtonsToListArray();
+    }
+
+    private void StartKeyBoardParameters()
+    {
+        if(_actLamp == KeyCode.None || _actLamp == KeyCode.Mouse0)
+        {
+        _actLamp = KeyCode.L;
+        _actWpnOne = KeyCode.Alpha1;
+        _actWpnTwo = KeyCode.Alpha2;
+        _actWpnThree = KeyCode.Alpha3;
+        _actBint = KeyCode.F1;
+        _actAnalgesic = KeyCode.F2;
+        _actMedkit = KeyCode.F3;
+        _keyActivity = KeyCode.F;
+        }
     }
 
     private void Update()

@@ -56,7 +56,7 @@ public class AnimationManager : StructsSave
                 break;
         }
 
-        if (SaveParametersObjects._singleton._playerHealth <= 0)
+        if (SaveParametersObjects._playerHealth <= 0)
             _playerAnimator.SetTrigger(PLAYER_ANIM_DEAD);
     }
     #endregion
@@ -113,7 +113,7 @@ public class AnimationManager : StructsSave
             {
                 case 0:
                     ActiveWeaponAnim(i, WEAPON_PISTOLET_ANIM_IDLE, default, false);
-                   break;
+                    break;
                 case 1:
                     ActiveWeaponAnim(i, WEAPON_AUTOMAT_ANIM_IDLE, default, false);
                     break;

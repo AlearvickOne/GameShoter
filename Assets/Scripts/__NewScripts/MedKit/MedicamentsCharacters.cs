@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class MedicamentsCharacters : StructsSave
 {
-    [SerializeField] private BoxCollider _playerColl;
+    private BoxCollider _playerColl;
     private int _medIndex;
 
     private void Start()
     {
+        _playerColl = SaveParametersObjects._singleton._playerColl;
         FindComponents();
     }
 
@@ -18,7 +19,6 @@ public class MedicamentsCharacters : StructsSave
             {
                 Debug.Log(i);
                 _medIndex = i;
-                _playerColl = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider>();
             }
         }
     }
@@ -30,13 +30,13 @@ public class MedicamentsCharacters : StructsSave
             switch (_medicamentStructs[_medIndex].medType)
             {
                 case MedicamentsType.bint:
-                    SaveParametersObjects._singleton._quantityBints += 1;
+                    SaveParametersObjects._quantityBints += 1;
                     break;
                 case MedicamentsType.analgesic:
-                    SaveParametersObjects._singleton._quantityAnalgesic += 1;
+                    SaveParametersObjects._quantityAnalgesic += 1;
                     break;
                 case MedicamentsType.medkit:
-                    SaveParametersObjects._singleton._quantityMedKit += 1;
+                    SaveParametersObjects._quantityMedKit += 1;
                     break;
             }
 

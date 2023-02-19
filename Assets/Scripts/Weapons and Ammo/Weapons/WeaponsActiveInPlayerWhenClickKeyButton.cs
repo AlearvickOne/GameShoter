@@ -42,9 +42,9 @@ public class WeaponsActiveInPlayerWhenClickKeyButton : AwakeMonoBehaviour
         int wpnAutomat = 1;
         int wpnRacketnica = 2;
 
-        ParametersActivate(KeyboardList._actWpnOne, SaveParametersObjects._singleton._wpnPistoletIsSelected, wpnPistolet);
-        ParametersActivate(KeyboardList._actWpnTwo, SaveParametersObjects._singleton._wpnAutomatIsSelected, wpnAutomat);
-        ParametersActivate(KeyboardList._actWpnThree, SaveParametersObjects._singleton._wpnRacketnicaIsSelected, wpnRacketnica);
+        ParametersActivate(KeyboardList._actWpnOne, SaveParametersObjects._wpnPistoletIsSelected, wpnPistolet);
+        ParametersActivate(KeyboardList._actWpnTwo, SaveParametersObjects._wpnAutomatIsSelected, wpnAutomat);
+        ParametersActivate(KeyboardList._actWpnThree, SaveParametersObjects._wpnRacketnicaIsSelected, wpnRacketnica);
 
         AmmoTextToGUI();
     }
@@ -83,13 +83,13 @@ public class WeaponsActiveInPlayerWhenClickKeyButton : AwakeMonoBehaviour
                 switch (i)
                 {
                     case 0:
-                        AssigningAmmoToText(SaveParametersObjects._singleton._pistoletAmmoQuantity);
+                        AssigningAmmoToText(SaveParametersObjects._pistoletAmmoQuantity);
                         break;
                     case 1:
-                        AssigningAmmoToText(SaveParametersObjects._singleton._automatAmmoQuantity);
+                        AssigningAmmoToText(SaveParametersObjects._automatAmmoQuantity);
                         break;
                     case 2:
-                        AssigningAmmoToText(SaveParametersObjects._singleton._racketnicaAmmoQuantity);
+                        AssigningAmmoToText(SaveParametersObjects._racketnicaAmmoQuantity);
                         break;
                 }
             }

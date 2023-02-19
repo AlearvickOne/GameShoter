@@ -7,8 +7,8 @@ public class Menu : MonoBehaviour
     [Header("MainMenu")]
     [SerializeField] private GameObject _mainMenu;
 
-    [SerializeField] private GameObject _sceneMainMenu;
-    [SerializeField] private GameObject _sceneLevelTwo;
+    [Header("MainMenuButtons")]
+    [SerializeField] private GameObject _continueGameButton;
 
     [Header("OptionMenu")]
     [SerializeField] private GameObject _optionsMenuActive;
@@ -32,12 +32,33 @@ public class Menu : MonoBehaviour
 
     #region [BUTTONS MENU]
 
+    private void Update()
+    {
+        ButtonContinueIsActive();
+    }
+
+    private void ButtonContinueIsActive()
+    {
+        SaveParametersObjects._singleton.LoadSaveFile();
+
+        if (SaveParametersObjects._singleton._newGameIsPlaying == true)
+            _continueGameButton.SetActive(true);
+        else if (SaveParametersObjects._singleton._newGameIsPlaying == false)
+            _continueGameButton.SetActive(false);
+    }
+
     public void NewGameLoadScene()
     {
+        SaveParametersObjects._singleton.DestroySaveFile();
         SceneManager.LoadScene(1);
+    }
 
-        //_sceneMainMenu.SetActive(false);
-        //_sceneLevelTwo.SetActive(true);
+    public void ContinueGameButton()
+    {
+        if (SaveParametersObjects._singleton._newGameIsPlaying == true)
+            SceneManager.LoadScene(SaveParametersObjects._singleton._sceneIndex);
+        else if (SaveParametersObjects._singleton._newGameIsPlaying == false)
+            return;
     }
 
     public void ButtonOpenMainMenu()

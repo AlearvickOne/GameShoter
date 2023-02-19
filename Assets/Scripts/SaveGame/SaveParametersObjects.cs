@@ -1,6 +1,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveParametersObjects : AwakeMonoBehaviour
 {
@@ -24,30 +25,36 @@ public class SaveParametersObjects : AwakeMonoBehaviour
     }
 
     #endregion
-
+    [Header("SceneIndex")]
+    [SerializeField] protected internal int _sceneIndex;
+    [SerializeField] protected internal bool _newGameIsPlaying;
     [Header("Player Parameters")]
-    [SerializeField] protected internal float _playerHealth;
+    [SerializeField] protected internal BoxCollider _playerColl;
+    [SerializeField] protected internal static float _playerHealth;
     [Header("Weapons is Selected?")]
-    [SerializeField] protected internal bool _wpnPistoletIsSelected;
-    [SerializeField] protected internal bool _wpnAutomatIsSelected;
-    [SerializeField] protected internal bool _wpnRacketnicaIsSelected;
+    [SerializeField] protected internal static bool _wpnPistoletIsSelected;
+    [SerializeField] protected internal static bool _wpnAutomatIsSelected;
+    [SerializeField] protected internal static bool _wpnRacketnicaIsSelected;
     [Header("Ammo bullets quantity in weapon shop")]
-    [SerializeField] protected internal int _pistoletAmmoQuantity;
-    [SerializeField] protected internal int _automatAmmoQuantity;
-    [SerializeField] protected internal int _racketnicaAmmoQuantity;
+    [SerializeField] protected internal static int _pistoletAmmoQuantity;
+    [SerializeField] protected internal static int _automatAmmoQuantity;
+    [SerializeField] protected internal static int _racketnicaAmmoQuantity;
     [Header("Medicaments Parameters")]
-    [SerializeField] protected internal int _quantityBints;
-    [SerializeField] protected internal int _quantityAnalgesic;
-    [SerializeField] protected internal int _quantityMedKit;
+    [SerializeField] protected internal static int _quantityBints;
+    [SerializeField] protected internal static int _quantityAnalgesic;
+    [SerializeField] protected internal static int _quantityMedKit;
     [Header("KeysDoors")]
-    [SerializeField] protected internal bool _greenKey;
-    [SerializeField] protected internal bool _redKey;
-    [SerializeField] protected internal bool _blueKey;
-    [SerializeField] protected internal bool _protivogas;
+    [SerializeField] protected internal static bool _greenKey;
+    [SerializeField] protected internal static bool _redKey;
+    [SerializeField] protected internal static bool _blueKey;
+    [SerializeField] protected internal static bool _protivogas;
 
     [System.Serializable]
-    public struct MyStruct
+    public struct SavingStruct
     {
+        // SceneIndex.
+        public bool newGameIsPlaying;
+        public int sceneIndex;
         // Player.
         public float playerHealth;
         // Weapons.
@@ -71,14 +78,11 @@ public class SaveParametersObjects : AwakeMonoBehaviour
 
     }
 
-    private MyStruct[] saveStruct;
-
-    [Multiline]
-    public string _saveToJson;
+    private SavingStruct[] _savingStruct;
 
     private void Awake()
     {
-        saveStruct = new MyStruct[1];
+        _savingStruct = new SavingStruct[1];
         SingletonActive();
     }
 
@@ -88,68 +92,88 @@ public class SaveParametersObjects : AwakeMonoBehaviour
             CreateAndSavingSaveFile();
         if (Input.GetKeyDown(KeyCode.F7))
             LoadSaveFile();
+
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            _sceneIndex = SceneManager.sceneCount;
+            _newGameIsPlaying = true;
+        }
+    }
+
+    private string FileSave
+    {
+        get { return $"{Application.persistentDataPath} /Save.box"; }
+    }
+
+    protected internal void DestroySaveFile()
+    {
+        File.Delete(FileSave);
     }
 
     private void CreateAndSavingSaveFile()
     {
         BinaryFormatter binFor = new BinaryFormatter();
-        FileStream file = File.Create($"{Application.persistentDataPath} /Save.box");
+        FileStream file = File.Create(FileSave);
         SaveParameters();
-        binFor.Serialize(file, saveStruct[0]);
+        binFor.Serialize(file, _savingStruct[0]);
         file.Close();
         Debug.Log("SAve");
     }
 
-    private void LoadSaveFile()
+    protected internal void LoadSaveFile()
     {
-        if (File.Exists($"{Application.persistentDataPath} /Save.box"))
+        if (File.Exists(FileSave))
         {
             BinaryFormatter binFor = new BinaryFormatter();
-            FileStream file = File.Open($"{Application.persistentDataPath} /Save.box", FileMode.Open);
-            saveStruct[0] = (MyStruct)binFor.Deserialize(file);
+            FileStream file = File.Open(FileSave, FileMode.Open);
+            _savingStruct[0] = (SavingStruct)binFor.Deserialize(file);
             file.Close();
-            LoadParameters(); 
+            LoadParameters();
             Debug.Log("Load");
         }
-        else
-            Debug.Log("NotSaveFile");
+        else if (File.Exists(FileSave))
+            return;
     }
 
     private void SaveParameters()
     {
-        saveStruct[0].playerHealth = _playerHealth;
-        saveStruct[0].pistoletAmmoQuantity = _pistoletAmmoQuantity;
-        saveStruct[0].automatAmmoQuantity = _automatAmmoQuantity;
-        saveStruct[0].racketnicaAmmoQuantity = _racketnicaAmmoQuantity;
-        saveStruct[0].wpnPistoletIsSelected = _wpnPistoletIsSelected;
-        saveStruct[0].wpnAutomatIsSelected = _wpnAutomatIsSelected;
-        saveStruct[0].wpnRacketnicaIsSelected = _wpnRacketnicaIsSelected;
-        saveStruct[0].quantityBints = _quantityBints;
-        saveStruct[0].quantityAnalgesic = _quantityAnalgesic;
-        saveStruct[0].quantityMedKit = _quantityMedKit;
-        saveStruct[0]._blueKey = _blueKey;
-        saveStruct[0]._redKey = _redKey;
-        saveStruct[0]._greenKey = _greenKey;
-        saveStruct[0]._protivogas = _protivogas;
+        _savingStruct[0].newGameIsPlaying = _newGameIsPlaying;
+        _savingStruct[0].sceneIndex = _sceneIndex;
+        _savingStruct[0].playerHealth = _playerHealth;
+        _savingStruct[0].pistoletAmmoQuantity = _pistoletAmmoQuantity;
+        _savingStruct[0].automatAmmoQuantity = _automatAmmoQuantity;
+        _savingStruct[0].racketnicaAmmoQuantity = _racketnicaAmmoQuantity;
+        _savingStruct[0].wpnPistoletIsSelected = _wpnPistoletIsSelected;
+        _savingStruct[0].wpnAutomatIsSelected = _wpnAutomatIsSelected;
+        _savingStruct[0].wpnRacketnicaIsSelected = _wpnRacketnicaIsSelected;
+        _savingStruct[0].quantityBints = _quantityBints;
+        _savingStruct[0].quantityAnalgesic = _quantityAnalgesic;
+        _savingStruct[0].quantityMedKit = _quantityMedKit;
+        _savingStruct[0]._blueKey = _blueKey;
+        _savingStruct[0]._redKey = _redKey;
+        _savingStruct[0]._greenKey = _greenKey;
+        _savingStruct[0]._protivogas = _protivogas;
 
     }
 
     private void LoadParameters()
     {
-        _playerHealth = saveStruct[0].playerHealth;
-        _pistoletAmmoQuantity = saveStruct[0].pistoletAmmoQuantity;
-        _automatAmmoQuantity = saveStruct[0].automatAmmoQuantity;
-        _racketnicaAmmoQuantity = saveStruct[0].racketnicaAmmoQuantity;
-        _wpnPistoletIsSelected = saveStruct[0].wpnPistoletIsSelected;
-        _wpnAutomatIsSelected = saveStruct[0].wpnAutomatIsSelected;
-        _wpnRacketnicaIsSelected = saveStruct[0].wpnRacketnicaIsSelected;
-        _quantityBints = saveStruct[0].quantityBints;
-        _quantityAnalgesic = saveStruct[0].quantityAnalgesic;
-        _quantityMedKit = saveStruct[0].quantityMedKit;
-        _blueKey = saveStruct[0]._blueKey;
-        _redKey = saveStruct[0]._redKey;
-        _greenKey = saveStruct[0]._greenKey;
-        _protivogas = saveStruct[0]._protivogas;
+        _newGameIsPlaying = _savingStruct[0].newGameIsPlaying;
+        _sceneIndex = _savingStruct[0].sceneIndex;
+        _playerHealth = _savingStruct[0].playerHealth;
+        _pistoletAmmoQuantity = _savingStruct[0].pistoletAmmoQuantity;
+        _automatAmmoQuantity = _savingStruct[0].automatAmmoQuantity;
+        _racketnicaAmmoQuantity = _savingStruct[0].racketnicaAmmoQuantity;
+        _wpnPistoletIsSelected = _savingStruct[0].wpnPistoletIsSelected;
+        _wpnAutomatIsSelected = _savingStruct[0].wpnAutomatIsSelected;
+        _wpnRacketnicaIsSelected = _savingStruct[0].wpnRacketnicaIsSelected;
+        _quantityBints = _savingStruct[0].quantityBints;
+        _quantityAnalgesic = _savingStruct[0].quantityAnalgesic;
+        _quantityMedKit = _savingStruct[0].quantityMedKit;
+        _blueKey = _savingStruct[0]._blueKey;
+        _redKey = _savingStruct[0]._redKey;
+        _greenKey = _savingStruct[0]._greenKey;
+        _protivogas = _savingStruct[0]._protivogas;
     }
 
 }

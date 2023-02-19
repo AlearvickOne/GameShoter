@@ -23,13 +23,13 @@ public class AmmoSelectionIsGround : StructsSave
                 switch (_ammoShopsStructs[i].ammoShopType)
                 {
                     case AmmoType.ammoPistolet:
-                        SaveParametersObjects._singleton._pistoletAmmoQuantity += RandomQuantity(i, 10, 15);
+                        SaveParametersObjects._pistoletAmmoQuantity += RandomQuantity(i, 10, 15);
                         break;
                     case AmmoType.ammoAutomat:
-                         SaveParametersObjects._singleton._automatAmmoQuantity += RandomQuantity(i, 30, 50);
+                         SaveParametersObjects._automatAmmoQuantity += RandomQuantity(i, 30, 50);
                         break;
                     case AmmoType.ammoRacketnica:
-                        SaveParametersObjects._singleton._racketnicaAmmoQuantity += RandomQuantity(i, 30, 50);
+                        SaveParametersObjects._racketnicaAmmoQuantity += RandomQuantity(i, 30, 50);
                         break;
                 }
             }

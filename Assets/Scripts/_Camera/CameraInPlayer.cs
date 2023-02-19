@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +10,7 @@ public class CameraInPlayer : AwakeMonoBehaviour
     [SerializeField] private GameObject player;
 
     private void LateUpdate()
-    { 
+    {
         CameraPosToPlayer();
     }
 

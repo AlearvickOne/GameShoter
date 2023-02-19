@@ -18,7 +18,7 @@ public class BossBulletDamageToPlayer : StructsSave
             BoxCollider bulletColl = _ammoBossStructs[i].bulletBossCollider;
             if (gameObject != null && other == bulletColl && bulletBoss != false)
             {
-                SaveParametersObjects._singleton._playerHealth -= 50;
+                SaveParametersObjects._playerHealth -= 50;
             }
         }
 

@@ -9,6 +9,7 @@ public class BossDeadAndShopSpawn : StructsSave
     [Header("                             OBJECTS")]
     [Space(10)]
     [SerializeField] private Animator _monsterAnimator;
+    [SerializeField] private GameObject _blueCard;
 
     private void Update()
     {
@@ -30,15 +31,7 @@ public class BossDeadAndShopSpawn : StructsSave
     private void AmmoAdding(int k)
     {
         StartCoroutine(TimerAnimAndDeactive(3.2f));
-        for (int i = 0; i < _ammoShopsStructs.Length; i++)
-        {
-            if (_ammoShopsStructs[i].ammoShop.gameObject.activeSelf == false)
-            {
-                _ammoShopsStructs[i].ammoShop.gameObject.SetActive(true);
-                _ammoShopsStructs[i].ammoShop.position = this.transform.position;
-                break;
-            }
-        }
+        _blueCard.transform.position = this.gameObject.transform.position;
         _aiBossStructs[k].bossIsDead = true;
 
     }

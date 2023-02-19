@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class KomplexLightAcive : MonoBehaviour
 {
-    [SerializeField] private BoxCollider _playerColl;
+    private BoxCollider _playerColl;
     [SerializeField] private GameObject _allLightKomplex;
     [SerializeField] private bool _transformatorIsActive = false;
 
     private void Start()
     {
+        _playerColl = SaveParametersObjects._singleton._playerColl;
         ActiveLightKomplex(false);
     }
 

@@ -91,8 +91,6 @@ public class BulletColliderDamageMonsters : StructsSave
                 
             }
         }
-        ArrayUtility.Clear(ref collSphereAoe);
-        Debug.Log(collSphereAoe);
     }
 
     private void OnTriggerEnter(Collider other)

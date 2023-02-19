@@ -15,7 +15,8 @@ public class TargetScopeTrigger : AwakeMonoBehaviour
     private void Start()
     {
         _bossAI = GetComponentInParent<BossAI>();
-        _playerColl = _bossAI._player.GetComponent<BoxCollider>();
+        _playerColl = SaveParametersObjects._singleton._playerColl;
+        
     }
 
     private void ColliderTriggerBossEyes(Collider other, bool bossEyesPlayer)

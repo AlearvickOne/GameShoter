@@ -27,6 +27,7 @@ public class PlayerCharacter : AwakeMonoBehaviour
     private void FindGetComponents()
     {
         _playerHpSliderGUI.maxValue = 1000;
+        SaveParametersObjects._playerHealth = 1000;
         _playerAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -43,16 +44,16 @@ public class PlayerCharacter : AwakeMonoBehaviour
 
     private void PlayeHpInSliderHp()
     {
-        _playerHpSliderGUI.value = SaveParametersObjects._singleton._playerHealth;
+        _playerHpSliderGUI.value = SaveParametersObjects._playerHealth;
     }
 
     private void PlayerHeathCheck()
     {
-        if (SaveParametersObjects._singleton._playerHealth < 0)
-            SaveParametersObjects._singleton._playerHealth = 0;
-        else if(SaveParametersObjects._singleton._playerHealth > _playerHpSliderGUI.maxValue)
+        if (SaveParametersObjects._playerHealth < 0)
+            SaveParametersObjects._playerHealth = 0;
+        else if(SaveParametersObjects._playerHealth > _playerHpSliderGUI.maxValue)
         {
-            SaveParametersObjects._singleton._playerHealth = _playerHpSliderGUI.maxValue;
+            SaveParametersObjects._playerHealth = _playerHpSliderGUI.maxValue;
             _playerHpSliderGUI.value = _playerHpSliderGUI.maxValue;
         }
     }

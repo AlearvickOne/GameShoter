@@ -73,13 +73,13 @@ public class WeaponCharacters : AwakeMonoBehaviour
         switch (_ammoType)
         {
             case AmmoType.ammoPistolet:
-                _ammoShopQuantity = SaveParametersObjects._singleton._pistoletAmmoQuantity -= minusQuantity;
+                _ammoShopQuantity = SaveParametersObjects._pistoletAmmoQuantity -= minusQuantity;
                 break;
             case AmmoType.ammoAutomat:
-                _ammoShopQuantity = SaveParametersObjects._singleton._automatAmmoQuantity -= minusQuantity;
+                _ammoShopQuantity = SaveParametersObjects._automatAmmoQuantity -= minusQuantity;
                 break;
             case AmmoType.ammoRacketnica:
-                _ammoShopQuantity = SaveParametersObjects._singleton._racketnicaAmmoQuantity -= minusQuantity;
+                _ammoShopQuantity = SaveParametersObjects._racketnicaAmmoQuantity -= minusQuantity;
                 break;
         }
     }
