@@ -82,12 +82,16 @@ public class AudioAllSettings : AwakeMonoBehaviour
             MusicGameBackGroundPlay(_musicGameMenu);
         else if (SceneManager.GetActiveScene().buildIndex == 1 && _playingMusicZone == false)
             MusicGameBackGroundPlay(_musicGamePlay);
+        else if (SceneManager.GetActiveScene().buildIndex == 2 && _playingMusicZone == false)
+            MusicGameBackGroundPlay(_musicGamePlay);
     }
 
     private void MusicGameBackGroundPlay(AudioClip nameMusic)
     {
         _musicGameAudio.PlayOneShot(nameMusic);
         _playingMusicZone = true;
+        if (!_musicGameAudio.isPlaying)
+            _musicGameAudio.PlayOneShot(nameMusic);
     }
 
 }

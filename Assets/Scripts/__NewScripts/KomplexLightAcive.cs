@@ -4,7 +4,6 @@ public class KomplexLightAcive : MonoBehaviour
 {
     private BoxCollider _playerColl;
     [SerializeField] private GameObject _allLightKomplex;
-    [SerializeField] private bool _transformatorIsActive = false;
 
     private void Start()
     {
@@ -14,22 +13,22 @@ public class KomplexLightAcive : MonoBehaviour
 
     private void ActiveButtonVisibleToUi(Collider other, bool isActive)
     {
-        if (other == _playerColl && _transformatorIsActive == false)
+        if (other == _playerColl && SaveParametersObjects._transformatorIsLight == false)
             KeyboardList._singleton._keyActivatedSpriteUI.gameObject.SetActive(isActive);
-        if (other == _playerColl && _transformatorIsActive == true)
+        if (other == _playerColl && SaveParametersObjects._transformatorIsLight == true)
             KeyboardList._singleton._keyActivatedSpriteUI.gameObject.SetActive(false);
     }
 
     private void ActiveLightKomplex(bool setActivaterd)
     {
-        if (_transformatorIsActive == false)
+        if (SaveParametersObjects._transformatorIsLight == false)
         {
             _allLightKomplex.SetActive(setActivaterd);
 
         }
         if (_allLightKomplex.activeSelf == true)
         {
-            _transformatorIsActive = true;
+            SaveParametersObjects._transformatorIsLight = true;
         }
     }
 

@@ -27,7 +27,7 @@ public class PlayerCharacter : AwakeMonoBehaviour
     private void FindGetComponents()
     {
         _playerHpSliderGUI.maxValue = 1000;
-        SaveParametersObjects._playerHealth = 1000;
+        SaveParametersObjects._playerHealth = _playerHpSliderGUI.maxValue;
         _playerAgent = GetComponent<NavMeshAgent>();
     }
 

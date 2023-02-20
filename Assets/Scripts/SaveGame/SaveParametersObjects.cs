@@ -48,7 +48,8 @@ public class SaveParametersObjects : AwakeMonoBehaviour
     [SerializeField] protected internal static bool _redKey;
     [SerializeField] protected internal static bool _blueKey;
     [SerializeField] protected internal static bool _protivogas;
-
+    [Header("LevelLights")]
+    [SerializeField] protected internal static bool _transformatorIsLight;
     [System.Serializable]
     public struct SavingStruct
     {
@@ -75,6 +76,8 @@ public class SaveParametersObjects : AwakeMonoBehaviour
         public bool _blueKey;
         //Inventory
         public bool _protivogas;
+        // Level Lights.
+        public bool _transformatorIsLight;
 
     }
 
@@ -95,7 +98,7 @@ public class SaveParametersObjects : AwakeMonoBehaviour
 
         if(SceneManager.GetActiveScene().buildIndex != 0)
         {
-            _sceneIndex = SceneManager.sceneCount;
+            _sceneIndex = SceneManager.GetActiveScene().buildIndex;
             _newGameIsPlaying = true;
         }
     }
@@ -108,9 +111,25 @@ public class SaveParametersObjects : AwakeMonoBehaviour
     protected internal void DestroySaveFile()
     {
         File.Delete(FileSave);
+        _playerHealth = 1000;
+        _pistoletAmmoQuantity = 0;
+        _automatAmmoQuantity = 0;
+        _racketnicaAmmoQuantity = 0;
+        _wpnPistoletIsSelected = false;
+        _wpnAutomatIsSelected = false;
+        _wpnRacketnicaIsSelected = false;
+        _quantityBints = 0;
+        _quantityAnalgesic = 0;
+        _quantityMedKit = 0;
+        _blueKey = false;
+        _redKey = false;
+        _greenKey = false;
+        _protivogas = false;
+        _transformatorIsLight = false;
+
     }
 
-    private void CreateAndSavingSaveFile()
+    protected internal void CreateAndSavingSaveFile()
     {
         BinaryFormatter binFor = new BinaryFormatter();
         FileStream file = File.Create(FileSave);
@@ -153,7 +172,7 @@ public class SaveParametersObjects : AwakeMonoBehaviour
         _savingStruct[0]._redKey = _redKey;
         _savingStruct[0]._greenKey = _greenKey;
         _savingStruct[0]._protivogas = _protivogas;
-
+        _savingStruct[0]._transformatorIsLight = _transformatorIsLight;
     }
 
     private void LoadParameters()
@@ -174,6 +193,7 @@ public class SaveParametersObjects : AwakeMonoBehaviour
         _redKey = _savingStruct[0]._redKey;
         _greenKey = _savingStruct[0]._greenKey;
         _protivogas = _savingStruct[0]._protivogas;
+        _transformatorIsLight = _savingStruct[0]._transformatorIsLight;
     }
 
 }

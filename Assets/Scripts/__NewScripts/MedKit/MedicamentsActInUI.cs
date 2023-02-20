@@ -32,9 +32,12 @@ public class MedicamentsActInUI : StructsSave
         ActiveComponentsInUi(SaveParametersObjects._quantityBints, _BintUI, _quantityBintsString);
         ActiveComponentsInUi(SaveParametersObjects._quantityAnalgesic, _analgesicUI, _quantityAnalgesicsString);
         ActiveComponentsInUi(SaveParametersObjects._quantityMedKit, _medKitUI, _quantityMedKitsString);
-        ActiveMedicamentsAndHealtPlayer(KeyboardList._actBint, MedicamentsType.bint, SaveParametersObjects._quantityBints);
-        ActiveMedicamentsAndHealtPlayer(KeyboardList._actAnalgesic, MedicamentsType.analgesic, SaveParametersObjects._quantityAnalgesic);
-        ActiveMedicamentsAndHealtPlayer(KeyboardList._actMedkit, MedicamentsType.medkit, SaveParametersObjects._quantityMedKit);
+        if(_medicamentStructs != default)
+        {
+            ActiveMedicamentsAndHealtPlayer(KeyboardList._actBint, MedicamentsType.bint, SaveParametersObjects._quantityBints);
+            ActiveMedicamentsAndHealtPlayer(KeyboardList._actAnalgesic, MedicamentsType.analgesic, SaveParametersObjects._quantityAnalgesic);
+            ActiveMedicamentsAndHealtPlayer(KeyboardList._actMedkit, MedicamentsType.medkit, SaveParametersObjects._quantityMedKit);
+        }
     }
 
     private void ActiveComponentsInUi(int quantityMed, GameObject medObject, TMP_Text quantityText)

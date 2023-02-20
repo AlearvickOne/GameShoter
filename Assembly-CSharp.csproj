@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\LevelObjects\Doors\KeyAddToPlayer.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\Menu\Menu.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\Textures\GUI\CardsAndProtivogasActiveUI.cs" />
     <Compile Include="Assets\Scripts\SaveGame\SaveParametersObjects.cs" />
     <Compile Include="Assets\Scripts\_Camera\CameraInPlayer.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\MedKit\MedicamentsCharacters.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scenes\MiniMenu.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerGazDamage.cs" />
+    <Compile Include="Assets\Textures\GUI\TasksBarGame.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\Weapons.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\Weapons\WeaponCharacters.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Assets\Scripts\_Managers\InputManager.cs" />
     <Compile Include="Assets\_TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\__NewScripts\AudioAllSettings.cs" />
+    <Compile Include="Assets\Scenes\GoToNextScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_TextMesh Pro\Shaders\TMPro.cginc" />
